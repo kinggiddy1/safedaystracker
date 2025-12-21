@@ -104,10 +104,9 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
     <!-- Section Header -->
     <div style="text-align: center; margin-bottom: 20px;">
   <h2 style="color: #EC407A; font-size: 1.8em; font-weight: 700; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">
-    Record Your Menstrual Cycles
+     A <strong>quick</strong> way to predict fertility: No account required. 
   </h2>
-  <p style="color: #666; font-size: 0.9em; margin: 0;">
-    A <strong>quick</strong> way to predict fertility — no account required.  
+  <p style="color: #666; font-size: 0.9em; margin: 0;"> 
     Enter your cycle dates from <strong><?= $pastMonthYear; ?></strong> to <strong><?= $currentMonthYear; ?></strong>.
   </p>
 </div>
@@ -152,7 +151,7 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
                   <input 
                     type="date" 
                     name="start[]" 
-                    required 
+                     
                     placeholder="<?php echo $months[$i]; ?>"
                     style="width: 100%; padding: 8px 12px; border: 2px solid #ffe0eb; border-radius: 6px; font-family: 'Poppins', sans-serif; font-size: 0.85em; outline: none;"
                     onfocus="this.style.borderColor='#EC407A'"
@@ -163,7 +162,7 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
                   <input 
                     type="date" 
                     name="end[]" 
-                    required 
+                     
                     placeholder="<?php echo $months[$i]; ?>"
                     style="width: 100%; padding: 8px 12px; border: 2px solid #ffe0eb; border-radius: 6px; font-family: 'Poppins', sans-serif; font-size: 0.85em; outline: none;"
                     onfocus="this.style.borderColor='#EC407A'"
@@ -321,7 +320,7 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
       <div class="col-lg-6">
         <div class="about-image position-relative" data-aos="fade-left" data-aos-delay="200">
           <img
-            src="assets/img/products/img1.jpg"
+            src="assets/img/products/woman.png"
             alt="Fertility Tracker Preview"
             class="img-fluid main-image rounded"
             style="box-shadow: 0 10px 40px rgba(236, 64, 122, 0.15);"
