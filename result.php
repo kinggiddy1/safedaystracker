@@ -459,14 +459,14 @@ if ($lastPeriodDate) {
     <div class="info-card">
         <h3><span class="warning-icon">⚠️</span> Important Information</h3>
         <p>
-            This calendar shows your menstrual cycle phases for <?= date('F Y') ?> based on your cycle data. 
-            <strong>Menstruation</strong> is your period (days 1-<?= $periodLength ?>). 
-            <strong>Follicular Phase</strong> is when your body prepares for ovulation. 
-            <strong>Fertile Window</strong> (light pink) is when pregnancy is possible (days <?= $displayFertileStart ?>-<?= $fertileEnd ?>). 
-            <strong>Ovulation Peak</strong> (dark pink) is when you're MOST fertile - typically days <?= $ovulationDay ?>-<?= $ovulationDayEnd ?>. 
-            <strong>Luteal Phase</strong> is after ovulation. 
+            This calendar shows your menstrual cycle phases for <?= date('F Y') ?> based on your cycle data.
+            <br><strong>Menstruation</strong> is your period (days 1-<?= $periodLength ?>). 
+            <br><strong>Follicular Phase</strong> is when your body prepares for ovulation. 
+            <br><strong>Fertile Window</strong> (light pink) is when pregnancy is possible (days <?= $displayFertileStart ?>-<?= $fertileEnd ?>). 
+            <br><strong>Ovulation Peak</strong> (dark pink) is when you're MOST fertile - typically days <?= $ovulationDay ?>-<?= $ovulationDayEnd ?>. 
+            <br><strong>Luteal Phase</strong> is after ovulation. 
             <strong>Safe Days</strong> have lower fertility. 
-            This tool is for educational purposes only and should not replace medical advice or contraception.
+            
         </p>
     </div>
 </div>

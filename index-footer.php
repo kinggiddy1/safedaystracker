@@ -3,9 +3,9 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">ORIGINAL FOOD DELIVERY</span>
+            <span class="sitename">SAFE DAYS TRACKER</span>
           </a>
-          <p style="color: #ffffffff;">Original Food Delivery is dedicated to delivering 100% pure, natural honey to customers around the world. We work closely with trusted local producers to ensure every product meets the highest standards of quality, freshness, and authenticity.</p>
+          <p style="color: #ffffffff;">Safe Days is your trusted companion for understanding your menstrual cycle. We provide accurate fertility predictions based on your personal cycle data, helping you make informed decisions about your reproductive health. Track, predict, and understand your body's natural rhythm.</p>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
