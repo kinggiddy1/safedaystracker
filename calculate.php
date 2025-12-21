@@ -28,7 +28,7 @@ if (count($cycleLengths) < 3) {
         'message' => 'Please record at least 3 Consecutive cycles for reliable prediction.',
         'cycles_provided' => count($cycleLengths)
     ];
-    header('Location: error.php');
+    header('Location: error');
     exit;
 }
 
