@@ -38,7 +38,7 @@
     </div>
 
     <div class="container text-center mt-4"style="color: #ffffffff;">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename"style="color: #ffffffff;">Original Food Delivery</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename"style="color: #ffffffff;">Safe Days Tracker</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
       </div>
     </div>
