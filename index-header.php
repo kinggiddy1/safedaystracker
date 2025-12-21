@@ -17,8 +17,8 @@
     <div class="branding d-flex align-items-center">
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="home" class="logo d-flex align-items-center">
-          <img src="assets/img/logo/logo.png" alt="Safe Days Tracker Logo">
-          <h1 class="sitename" style="color: #EC407A;">SAFE DAYS TRACKER</h1>
+          <!-- <img src="assets/img/logo/logo.png" alt="Safe Days Tracker Logo"> -->
+          <h1 class="sitename" style="color: #EC407A;">📊 SAFE DAYS TRACKER</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
