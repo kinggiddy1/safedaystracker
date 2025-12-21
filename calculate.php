@@ -23,7 +23,13 @@ for ($i = 0; $i < count($starts); $i++) {
 }
 
 if (count($cycleLengths) < 3) {
-    die("Please record at least 3 cycles for reliable prediction.");
+    session_start();
+    $_SESSION['error'] = [
+        'message' => 'Please record at least 3 Consecutive cycles for reliable prediction.',
+        'cycles_provided' => count($cycleLengths)
+    ];
+    header('Location: error.php');
+    exit;
 }
 
 // Core values
