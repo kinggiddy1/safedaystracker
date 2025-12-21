@@ -2,8 +2,8 @@
     <div class="topbar d-flex align-items-center" style="background-color: #EC407A;">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
-          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:info@originalfooddelivery.com">info@originalfooddelivery.com</a></i>
-          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+250 788 658 619</span></i>
+          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:info@safedaystracker.com">info@safedaystracker.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+250</span></i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
           <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
