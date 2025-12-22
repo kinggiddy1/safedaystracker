@@ -15,7 +15,7 @@ $userData = $process->GetRow("SELECT names, email FROM users WHERE id = ?",["$us
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - Link Rwanda</title>
+        <title>Dashboard - SAFE DAYS TRACKER</title>
         <!-- Load Favicon-->
         <link href="assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <!-- Load Material Icons from Google Fonts-->
