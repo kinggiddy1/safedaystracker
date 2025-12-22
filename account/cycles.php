@@ -4,7 +4,7 @@ require_once('loader.php');
 $userId = $_SESSION['userId'];
 
 $userData = $process->GetRow("SELECT names, email FROM users WHERE id = ?",["$userId"]);
-$userList = $process->GetRows("SELECT id,names, email, phone, role, status, createdAt FROM users");
+$cycleList = $process->GetRows("SELECT * FROM cycles WHERE user_id = ?",["$userId"]);
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +53,7 @@ $userList = $process->GetRows("SELECT id,names, email, phone, role, status, crea
                 </nav>
             </div>
             <!-- Layout content-->
-            <?php require_once ('user-table.php'); ?>
+            <?php require_once ('cycle-table.php'); ?>
         </div>
         <!-- Load Bootstrap JS bundle-->
         <script src="../cdn.jsdelivr.net/npm/bootstrap%405.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

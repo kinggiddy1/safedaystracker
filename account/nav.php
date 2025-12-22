@@ -8,7 +8,7 @@
                 <div class="nav-link-icon"><i class="material-icons">home</i></div>
                 Home
             </a>
-             <a class="nav-link" href="users.php">
+             <a class="nav-link" href="cycles.php">
                 <div class="nav-link-icon"><i class="material-icons">person</i></div>
                 My Cycles
             </a> 
