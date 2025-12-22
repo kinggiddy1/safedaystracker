@@ -4,7 +4,7 @@ require_once('loader.php');
 $userId = $_SESSION['userId'];
 
 $userData = $process->GetRow("SELECT names, email FROM users WHERE id = ?",["$userId"]);
-$cycleList = $process->GetRows("SELECT * FROM cycles WHERE user_id = ?",["$userId"]);
+$cycles = $process->GetRows("SELECT * FROM cycles WHERE user_id = ?",["$userId"]);
 ?>
 
 <!DOCTYPE html>

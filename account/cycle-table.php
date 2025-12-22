@@ -17,11 +17,10 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                              <th>Status</th>
-                                                <th>Role</th>
-                                                  <th>Created At</th>
+                                            <th>Period Start Date</th>
+                                            <th>Next Period Start Date</th>
+                                            <th>Added At</th>
+                                            <th>Updated At</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
