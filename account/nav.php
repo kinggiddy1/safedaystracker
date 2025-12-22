@@ -12,12 +12,5 @@
                 <div class="nav-link-icon"><i class="material-icons">person</i></div>
                 My Cycles
             </a> 
-            <!-- <a class="nav-link" href="products.php">
-                <div class="nav-link-icon"><i class="material-icons">shopping_bag</i></div>
-                Products
-            </a>
-             <a class="nav-link" href="category.php">
-                <div class="nav-link-icon"><i class="material-icons">category</i></div>
-                Category
-            </a> -->
+          
         </div>
