@@ -203,7 +203,7 @@ $(document).ready(function() {
         responsive: true,
         pageLength: 10,
         lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-        order: [[0, 'desc']], // Sort by ID descending (newest first)
+        order: [[0, 'desc']], 
         dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>Brtip',
         buttons: [
             {
