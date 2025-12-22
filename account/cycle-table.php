@@ -1,64 +1,85 @@
 <div id="layoutDrawer_content">
-                <main>
-                    <!-- Main dashboard content-->
-                    <div class="container-xl p-5">
-                        
-                        
-                            
-                         
-                    <div class="row gx-5"> 
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="row align-items-center"> <div class="col"> <h5 class="card-title mb-0">User Table</h5> </div> <div class="col text-end"> <button class="btn btn-dark">Add User</button> </div> </div>
+    <main>
+        <div class="container-xl p-5">                         
+            <div class="row gx-5"> 
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h5 class="card-title mb-0">Cycles Table</h5>
+                                </div>
+                                <div class="col text-end">
+                                    <button class="btn btn-dark" onclick="window.location.href='add-cycle.php'">
+                                        <i class="bi bi-plus-circle"></i> Add New Cycle
+                                    </button>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <thead>
+                        </div>
+                        <div class="card-body">
+                            <table id="cyclesTable" class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Period Start Date</th>
+                                        <th>Next Period Start Date</th>
+                                        <th>Cycle Length</th>
+                                        <th>Added At</th>
+                                        <th>Updated At</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($cycles as $cycle): 
+                                        // Calculate cycle length
+                                        $start = new DateTime($cycle['period_start_date']);
+                                        $end = new DateTime($cycle['next_period_start_date']);
+                                        $cycleLength = $start->diff($end)->days;
+                                    ?>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Period Start Date</th>
-                                            <th>Next Period Start Date</th>
-                                            <th>Added At</th>
-                                            <th>Updated At</th>
-                                            <th>Actions</th>
+                                            <td><?php echo $cycle['cycle_id']; ?></td>
+                                            <td><?php echo date('M d, Y', strtotime($cycle['period_start_date'])); ?></td>
+                                            <td><?php echo date('M d, Y', strtotime($cycle['next_period_start_date'])); ?></td>
+                                            <td>
+                                                <span class="badge" style="background: <?php 
+                                                    if ($cycleLength < 24) echo '#ef5350';
+                                                    elseif ($cycleLength > 32) echo '#ff6b9d';
+                                                    else echo '#7bd3b0';
+                                                ?>; color: white; padding: 5px 12px; border-radius: 15px;">
+                                                    <?php echo $cycleLength; ?> days
+                                                </span>
+                                            </td>
+                                            <td><?php echo date('M d, Y H:i', strtotime($cycle['cycle_created_at'])); ?></td>
+                                            <td><?php echo date('M d, Y H:i', strtotime($cycle['cycle_updated_at'])); ?></td>
+                                            <td>
+                                                <a href="edit-cycle.php?id=<?php echo $cycle['cycle_id']; ?>" class="btn btn-sm btn-primary" title="Edit">
+                                                    <i class="bi bi-pencil"></i> Edit
+                                                </a>
+                                                <a href="delete-cycle.php?id=<?php echo $cycle['cycle_id']; ?>" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you sure you want to delete this cycle?')">
+                                                    <i class="bi bi-trash"></i> Delete
+                                                </a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($userList as $user): ?>
-                                            <tr>
-                                                <td><?php echo $user['id']; ?></td>
-                                                <td><?php echo $user['names']; ?></td>
-                                                <td><?php echo $user['email']; ?></td>
-                                                <td><?php echo $user['status']; ?></td>
-                                                <td><?php echo $user['role']; ?></td>
-                                                <td><?php echo $user['createdAt']; ?></td>
-                                                <td>
-                                                    <a href="edit-user.php?id=<?php echo $user['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
-                                                    <a href="submissions.php?id=<?php echo $user['id']; ?>" name="deleteUser" class="btn btn-sm btn-danger">Delete</a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                        
-                    </div>
-                </main>
-                <!-- Footer-->
-                <!-- Min-height is set inline to match the height of the drawer footer-->
-                <footer class="py-4 mt-auto border-top" style="min-height: 74px">
-                    <div class="container-xl px-5">
-                        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
-                            <div class="me-sm-2">Copyright © Your Website 2023</div>
-                            <div class="d-flex ms-sm-2">
-                                <a class="text-decoration-none" href="#!">Privacy Policy</a>
-                                <div class="mx-1">·</div>
-                                <a class="text-decoration-none" href="#!">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                </div>
             </div>
+        </div>
+    </main>
+               
+    <footer class="py-4 mt-auto border-top" style="min-height: 74px">
+        <div class="container-xl px-5">
+            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
+                <div class="me-sm-2">Copyright © Your Website 2023</div>
+                <div class="d-flex ms-sm-2">
+                    <a class="text-decoration-none" href="#!">Privacy Policy</a>
+                    <div class="mx-1">·</div>
+                    <a class="text-decoration-none" href="#!">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
