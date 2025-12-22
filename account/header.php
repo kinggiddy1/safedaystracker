@@ -1,15 +1,14 @@
-    <nav class="top-app-bar navbar navbar-expand navbar-dark bg-dark">
+    <nav class="top-app-bar navbar navbar-expand navbar-dark" style="background-color: #EC407A;">
     <div class="container-fluid px-4">
         <!-- Drawer toggle button-->
         <button class="btn btn-lg btn-icon order-1 order-lg-0" id="drawerToggle" href="javascript:void(0);"><i class="material-icons">menu</i></button>
         <!-- Navbar brand-->
-        <a class="navbar-brand me-auto" href="dashboard.php"><div class="text-uppercase font-monospace">Welcome,<?php echo $userData['names']; ?></div></a>
+        <a class="navbar-brand me-auto" href="dashboard.php"><div class="">SAFE DAYS TRACKER</div></a>
         <!-- Navbar items-->
         <div class="d-flex align-items-center mx-3 me-lg-0">
             <!-- Navbar-->
             <ul class="navbar-nav d-none d-lg-flex">
-                <li class="nav-item"><a class="nav-link" href="index-2.html">Overview</a></li>
-                <li class="nav-item"><a class="nav-link" href="https://docs.startbootstrap.com/material-admin-pro" target="_blank">Documentation</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://docs.startbootstrap.com/material-admin-pro" target="_blank">Hello <?php echo $userData['names']; ?></a></li>
             </ul>
             <!-- Navbar buttons-->
             <div class="d-flex">

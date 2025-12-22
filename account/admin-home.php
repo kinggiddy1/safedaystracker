@@ -4,22 +4,6 @@
                         <div class="row justify-content-between align-items-center mb-5">
                             <div class="col flex-shrink-0 mb-5 mb-md-0">
                                 <h1 class="display-4 mb-0">Dashboard</h1>
-                                <div class="text-muted">Sales overview &amp; summary</div>
-                            </div>
-                            <div class="col-12 col-md-auto">
-                                <div class="d-flex flex-column flex-sm-row gap-3">
-                                    <mwc-select class="mw-50 mb-2 mb-md-0" outlined="" label="View by">
-                                        <mwc-list-item selected="" value="0">Order type</mwc-list-item>
-                                        <mwc-list-item value="1">Segment</mwc-list-item>
-                                        <mwc-list-item value="2">Customer</mwc-list-item>
-                                    </mwc-select>
-                                    <mwc-select class="mw-50" outlined="" label="Sales from">
-                                        <mwc-list-item value="0">Last 7 days</mwc-list-item>
-                                        <mwc-list-item value="1">Last 30 days</mwc-list-item>
-                                        <mwc-list-item value="2">Last month</mwc-list-item>
-                                        <mwc-list-item selected="" value="3">Last year</mwc-list-item>
-                                    </mwc-select>
-                                </div>
                             </div>
                         </div>
                         <!-- Colored status cards-->
@@ -29,181 +13,208 @@
                                     <div class="card-body px-4">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div class="me-2">
-                                                <div class="display-5">101.1K</div>
-                                                <div class="card-text">Downloads</div>
+                                                <div class="display-5"><h1>10</h1></div>
+                                                <div class="card-text">Total months</div>
                                             </div>
                                             <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
-                                        </div>
-                                        <div class="card-text">
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="material-icons icon-xs text-success">arrow_upward</i>
-                                                <div class="caption text-success fw-500 me-2">3%</div>
-                                                <div class="caption">from last month</div>
-                                            </div>
-                                        </div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xxl-3 col-md-6 mb-5">
-                                <div class="card card-raised border-start border-warning border-4">
+                                <div class="card card-raised border-start border-primary border-4">
                                     <div class="card-body px-4">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div class="me-2">
-                                                <div class="display-5">12.2K</div>
-                                                <div class="card-text">Purchases</div>
+                                                <div class="display-5"><h1>10</h1></div>
+                                                <div class="card-text">Total months</div>
                                             </div>
-                                            <div class="icon-circle bg-warning text-white"><i class="material-icons">storefront</i></div>
-                                        </div>
-                                        <div class="card-text">
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="material-icons icon-xs text-success">arrow_upward</i>
-                                                <div class="caption text-success fw-500 me-2">3%</div>
-                                                <div class="caption">from last month</div>
-                                            </div>
-                                        </div>
+                                            <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xxl-3 col-md-6 mb-5">
-                                <div class="card card-raised border-start border-secondary border-4">
+                                <div class="card card-raised border-start border-primary border-4">
                                     <div class="card-body px-4">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div class="me-2">
-                                                <div class="display-5">5.3K</div>
-                                                <div class="card-text">Customers</div>
+                                                <div class="display-5"><h1>10</h1></div>
+                                                <div class="card-text">Total months</div>
                                             </div>
-                                            <div class="icon-circle bg-secondary text-white"><i class="material-icons">people</i></div>
-                                        </div>
-                                        <div class="card-text">
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="material-icons icon-xs text-success">arrow_upward</i>
-                                                <div class="caption text-success fw-500 me-2">3%</div>
-                                                <div class="caption">from last month</div>
-                                            </div>
-                                        </div>
+                                            <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xxl-3 col-md-6 mb-5">
-                                <div class="card card-raised border-start border-info border-4">
+                                <div class="card card-raised border-start border-primary border-4">
                                     <div class="card-body px-4">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div class="me-2">
-                                                <div class="display-5">7</div>
-                                                <div class="card-text">Channels</div>
+                                                <div class="display-5"><h1>10</h1></div>
+                                                <div class="card-text">Total months</div>
                                             </div>
-                                            <div class="icon-circle bg-info text-white"><i class="material-icons">devices</i></div>
-                                        </div>
-                                        <div class="card-text">
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="material-icons icon-xs text-success">arrow_upward</i>
-                                                <div class="caption text-success fw-500 me-2">3%</div>
-                                                <div class="caption">from last month</div>
-                                            </div>
-                                        </div>
+                                            <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row gx-5">
-                            <!-- Revenue breakdown chart example-->
-                            <div class="col-lg-8 mb-5">
-                                <div class="card card-raised h-100">
-                                    <div class="card-header bg-transparent px-4">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="me-4">
-                                                <h2 class="card-title mb-0">Revenue Breakdown</h2>
-                                                <div class="card-subtitle">Compared to previous year</div>
-                                            </div>
-                                            <div class="d-flex gap-2 me-n2">
-                                                <button class="btn btn-lg btn-text-primary btn-icon" type="button"><i class="material-icons">download</i></button>
-                                                <button class="btn btn-lg btn-text-primary btn-icon" type="button"><i class="material-icons">print</i></button>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="col-lg-12 mb-5">
+                                <div class="card card-raised h-100">                                   
                                     <div class="card-body p-4">
-                                        <div class="row gx-4">
-                                            <div class="col-12 col-xxl-2">
-                                                <div class="d-flex flex-column flex-md-row flex-xxl-column align-items-center align-items-xl-start justify-content-between">
-                                                    <div class="mb-4 text-center text-md-start">
-                                                        <div class="text-xs font-monospace text-muted mb-1">Actual Revenue</div>
-                                                        <div class="display-5 fw-500">$59,482</div>
+                                        
+
+
+                                            <div class="header-section">
+                                                <div class="logo-title">
+                                                    <div class="logo">🌸</div>
+                                                    <h1>Your Cycle Calendar</h1>
+                                                </div>
+                                                <p class="month-title"><?= date('F Y') ?></p>
+                                            </div>
+
+                                            <div class="calendar-card">
+                                                <div class="legend">
+                                                    <div class="legend-item">
+                                                        <div class="legend-box legend-menstruation"></div>
+                                                        <span><strong>Menstruation</strong><br>Period days</span>
                                                     </div>
-                                                    <div class="mb-4 text-center text-md-start">
-                                                        <div class="text-xs font-monospace text-muted mb-1">Revenue Target</div>
-                                                        <div class="display-5 fw-500">$50,000</div>
+                                                    <div class="legend-item">
+                                                        <div class="legend-box legend-follicular"></div>
+                                                        <span><strong>Follicular Phase</strong><br>Pre-ovulation</span>
                                                     </div>
-                                                    <div class="mb-4 text-center text-md-start">
-                                                        <div class="text-xs font-monospace text-muted mb-1">Goal</div>
-                                                        <div class="display-5 fw-500 text-success">119%</div>
+                                                    <div class="legend-item">
+                                                        <div class="legend-box legend-fertile"></div>
+                                                        <span><strong>Fertile Window</strong><br>High chance</span>
+                                                    </div>
+                                                    <div class="legend-item">
+                                                        <div class="legend-box legend-ovulation"></div>
+                                                        <span><strong>Ovulation Peak</strong><br>Highest fertility</span>
+                                                    </div>
+                                                    <div class="legend-item">
+                                                        <div class="legend-box legend-luteal"></div>
+                                                        <span><strong>Luteal Phase</strong><br>Post-ovulation</span>
+                                                    </div>
+                                                    <div class="legend-item">
+                                                        <div class="legend-box legend-safe"></div>
+                                                        <span><strong>Safe Days</strong><br>Less fertile</span>
                                                     </div>
                                                 </div>
+
+                                                <div class="calendar">
+                                                    <!-- Weekday headers -->
+                                                    <div class="header">Sun</div>
+                                                    <div class="header">Mon</div>
+                                                    <div class="header">Tue</div>
+                                                    <div class="header">Wed</div>
+                                                    <div class="header">Thu</div>
+                                                    <div class="header">Fri</div>
+                                                    <div class="header">Sat</div>
+
+                                                    <!-- Empty slots for days before the first day -->
+                                                    <?php for ($i = 0; $i < $startDayOfWeek; $i++): ?>
+                                                        <div class="empty"></div>
+                                                    <?php endfor; ?>
+
+                                                    <!-- Days of the month -->
+                                                    <?php 
+                                                    for ($day = 1; $day <= $daysInMonth; $day++):
+                                                        // Create timestamp for current calendar day
+                                                        $currentDayTimestamp = mktime(0, 0, 0, $month, $day, $year);
+                                                        $lastPeriodFullTimestamp = mktime(0, 0, 0, $lastPeriodMonth, $lastPeriodDay, $lastPeriodYear);
+                                                        
+                                                        // Calculate days since last period started
+                                                        $daysSinceLastPeriod = floor(($currentDayTimestamp - $lastPeriodFullTimestamp) / (60 * 60 * 24));
+                                                        
+                                                        // Calculate cycle day (1-based)
+                                                        $dayOfCycle = ($daysSinceLastPeriod % $cycleLength) + 1;
+                                                        if ($daysSinceLastPeriod < 0) {
+                                                            // Before last period - calculate from previous cycle
+                                                            $dayOfCycle = $cycleLength + $daysSinceLastPeriod + 1;
+                                                        }
+                                                        
+                                                        // Determine phase and class based on cycle day
+                                                        if ($dayOfCycle >= 1 && $dayOfCycle <= $periodLength) {
+                                                            $class = 'menstruation';
+                                                            $phase = 'Period';
+                                                        } elseif ($dayOfCycle > $periodLength && $dayOfCycle < $displayFertileStart) {
+                                                            // Follicular phase: after period but before fertile window
+                                                            $class = 'follicular';
+                                                            $phase = 'Follicular';
+                                                        } elseif ($dayOfCycle >= $ovulationDay && $dayOfCycle <= $ovulationDayEnd) {
+                                                            // Peak ovulation days (2 days in middle of fertile window)
+                                                            $class = 'ovulation';
+                                                            $phase = 'Ovulation';
+                                                        } elseif ($dayOfCycle >= $displayFertileStart && $dayOfCycle <= $fertileEnd) {
+                                                            // Fertile window (includes days around ovulation)
+                                                            $class = 'fertile';
+                                                            $phase = 'Fertile';
+                                                        } elseif ($dayOfCycle > $fertileEnd && $dayOfCycle <= $cycleLength) {
+                                                            $class = 'luteal';
+                                                            $phase = 'Luteal';
+                                                        } else {
+                                                            $class = 'safe';
+                                                            $phase = 'Safe';
+                                                        }
+                                                    ?>
+                                                        <div class="day <?= $class ?>">
+                                                            <?= $day ?>
+                                                        </div>
+                                                    <?php endfor; ?>
+                                                </div>
                                             </div>
-                                            <div class="col-12 col-xxl-10"><canvas id="dashboardBarChart"></canvas></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-transparent position-relative ripple-gray">
-                                        <a class="d-flex align-items-center justify-content-end text-decoration-none stretched-link text-primary" href="#!">
-                                            <div class="fst-button">Open Report</div>
-                                            <i class="material-icons icon-sm ms-1">chevron_right</i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Segments pie chart example-->
-                            <div class="col-lg-4 mb-5">
-                                <div class="card card-raised h-100">
-                                    <div class="card-header bg-transparent px-4">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="me-4">
-                                                <h2 class="card-title mb-0">Segments</h2>
-                                                <div class="card-subtitle">Revenue sources</div>
+
+                                            <div class="stats-grid">
+                                                <div class="stat-box">
+                                                    <div class="stat-number"><?= $shortest ?></div>
+                                                    <div class="stat-label">Shortest Cycle</div>
+                                                </div>
+                                                <div class="stat-box">
+                                                    <div class="stat-number"><?= $average ?></div>
+                                                    <div class="stat-label">Average Cycle</div>
+                                                </div>
+                                                <div class="stat-box">
+                                                    <div class="stat-number"><?= $longest ?></div>
+                                                    <div class="stat-label">Longest Cycle</div>
+                                                </div>
+                                                <div class="stat-box">
+                                                    <div class="stat-number"><?= ($fertileEnd - $displayFertileStart + 1) ?></div>
+                                                    <div class="stat-label">Fertile Days</div>
+                                                </div>
                                             </div>
-                                            <div class="dropdown">
-                                                <button class="btn btn-lg btn-text-gray btn-icon me-n2 dropdown-toggle" id="segmentsDropdownButton" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></button>
-                                                <ul class="dropdown-menu" aria-labelledby="segmentsDropdownButton">
-                                                    <li><a class="dropdown-item" href="#!">Action</a></li>
-                                                    <li><a class="dropdown-item" href="#!">Another action</a></li>
-                                                    <li><a class="dropdown-item" href="#!">Something else here</a></li>
-                                                    <li><hr class="dropdown-divider" /></li>
-                                                    <li><a class="dropdown-item" href="#!">Separated link</a></li>
-                                                    <li><a class="dropdown-item" href="#!">Separated link</a></li>
-                                                </ul>
+
+                                            <div class="info-card">
+                                                <h3><span class="warning-icon">⚠️</span> Important Information</h3>
+                                                <p>
+                                                    This calendar shows your menstrual cycle phases for <?= date('F Y') ?> based on your cycle data.
+                                                    <br><strong>Menstruation</strong> is your period (days 1-<?= $periodLength ?>). 
+                                                    <br><strong>Follicular Phase</strong> is when your body prepares for ovulation. 
+                                                    <br><strong>Fertile Window</strong> (light pink) is when pregnancy is possible (days <?= $displayFertileStart ?>-<?= $fertileEnd ?>). 
+                                                    <br><strong>Ovulation Peak</strong> (dark pink) is when you're MOST fertile - typically days <?= $ovulationDay ?>-<?= $ovulationDayEnd ?>. 
+                                                    <br><strong>Luteal Phase</strong> is after ovulation. 
+                                                    <strong>Safe Days</strong> have lower fertility. 
+                                                    
+                                                </p>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body p-4">
-                                        <div class="d-flex h-100 w-100 align-items-center justify-content-center">
-                                            <div class="w-100" style="max-width: 20rem"><canvas id="myPieChart"></canvas></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-transparent position-relative ripple-gray">
-                                        <a class="d-flex align-items-center justify-content-end text-decoration-none stretched-link text-primary" href="#!">
-                                            <div class="fst-button">Open Report</div>
-                                            <i class="material-icons icon-sm ms-1">chevron_right</i>
-                                        </a>
-                                    </div>
+
+
+
+                                    </div>                                   
                                 </div>
                             </div>
                         </div>
-                        <div class="row gx-5">
-                            <!-- Privacy suggestions illustrated card-->
-                            
-                        </div>
-                        
+                        <div class="row gx-5">                            
+                        </div>                      
                     </div>
                 </main>
-                <!-- Footer-->
-                <!-- Min-height is set inline to match the height of the drawer footer-->
                 <footer class="py-4 mt-auto border-top" style="min-height: 74px">
                     <div class="container-xl px-5">
                         <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
-                            <div class="me-sm-2">Copyright © Your Website 2023</div>
-                            <div class="d-flex ms-sm-2">
-                                <a class="text-decoration-none" href="#!">Privacy Policy</a>
-                                <div class="mx-1">·</div>
-                                <a class="text-decoration-none" href="#!">Terms &amp; Conditions</a>
-                            </div>
+                            <div class="me-sm-2 align-items-center justify-content-sm-center">Copyright © safedaystracker.com <?php echo date("Y"); ?></div>
                         </div>
                     </div>
                 </footer>

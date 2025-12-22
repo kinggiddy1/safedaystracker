@@ -27,6 +27,285 @@ $userData = $process->GetRow("SELECT names, email FROM users WHERE id = ?",["$us
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500" rel="stylesheet" />
         <!-- Load main stylesheet-->
         <link href="css/styles.css" rel="stylesheet" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #fef5f8 0%, #fff0f5 100%);
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .header-section {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .logo-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        background: #EC407A;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    h1 {
+        color: #EC407A;
+        font-size: 2.5em;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .month-title {
+        color: #666;
+        font-size: 1.2em;
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+
+    .calendar-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(236, 64, 122, 0.1);
+        margin-bottom: 30px;
+    }
+
+    .legend {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: #666;
+        padding: 8px;
+        background: #fafafa;
+        border-radius: 8px;
+    }
+
+    .legend-box {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        flex-shrink: 0;
+    }
+
+    .legend-menstruation {
+        background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
+    }
+
+    .legend-follicular {
+        background: linear-gradient(135deg, #a8e6cf 0%, #7bd3b0 100%);
+    }
+
+    .legend-ovulation {
+        background: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+    }
+
+    .legend-fertile {
+        background: linear-gradient(135deg, #ff9999 0%, #ff6b9d 100%);
+    }
+
+    .legend-luteal {
+        background: linear-gradient(135deg, #90caf9 0%, #64b5f6 100%);
+    }
+
+    .legend-safe {
+        background: linear-gradient(135deg, #dcedc8 0%, #c5e1a5 100%);
+    }
+
+    .calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+    }
+
+    .header {
+        padding: 15px;
+        text-align: center;
+        font-weight: 600;
+        color: #EC407A;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .day {
+        padding: 20px;
+        text-align: center;
+        border-radius: 12px;
+        font-weight: 500;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .day:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .menstruation {
+        background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
+        color: white;
+        font-weight: 600;
+    }
+
+    .follicular {
+        background: linear-gradient(135deg, #a8e6cf 0%, #7bd3b0 100%);
+        color: #2a7a2a;
+        font-weight: 600;
+    }
+
+    .ovulation {
+        background: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+        color: white;
+        font-weight: 700;
+        border: 3px solid #c51162;
+    }
+
+    .fertile {
+        background: linear-gradient(135deg, #ff9999 0%, #ff6b9d 100%);
+        color: white;
+        font-weight: 600;
+    }
+
+    .luteal {
+        background: linear-gradient(135deg, #90caf9 0%, #64b5f6 100%);
+        color: #1565c0;
+        font-weight: 600;
+    }
+
+    .safe {
+        background: linear-gradient(135deg, #dcedc8 0%, #c5e1a5 100%);
+        color: #558b2f;
+        font-weight: 600;
+    }
+
+    .empty {
+        background: transparent;
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 40px rgba(236, 64, 122, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .info-card h3 {
+        color: #EC407A;
+        font-size: 1.3em;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .info-card p {
+        color: #666;
+        line-height: 1.8;
+        font-size: 14px;
+    }
+
+    .warning-icon {
+        font-size: 24px;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .stat-box {
+        background: linear-gradient(135deg, #fef5f8 0%, #fff0f5 100%);
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2em;
+        font-weight: 700;
+        color: #EC407A;
+    }
+
+    .stat-label {
+        color: #666;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .calendar-card {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .day {
+            padding: 15px 10px;
+            font-size: 14px;
+        }
+
+        .header {
+            padding: 10px 5px;
+            font-size: 12px;
+        }
+
+        .legend {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .day {
+            padding: 12px 5px;
+            font-size: 13px;
+        }
+
+        .header {
+            font-size: 10px;
+        }
+    }
+</style>
     </head>
     <body class="nav-fixed bg-light">
         <!-- Top app bar navigation menu-->
