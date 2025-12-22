@@ -207,11 +207,6 @@ $(document).ready(function() {
         dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>Brtip',
         buttons: [
             {
-                extend: 'copy',
-                text: '<i class="bi bi-clipboard"></i> Copy',
-                className: 'btn-sm'
-            },
-            {
                 extend: 'excel',
                 text: '<i class="bi bi-file-earmark-excel"></i> Excel',
                 className: 'btn-sm',
