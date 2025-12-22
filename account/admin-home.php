@@ -1,12 +1,6 @@
 <div id="layoutDrawer_content">
                 <main>
                     <div class="container-xl p-1">
-                        <div class="row justify-content-between align-items-center mb-5">
-                            <div class="col flex-shrink-0 mb-0 mb-md-0">
-                                <h3 class="display-4 mb-0">Dashboard</h3>
-                            </div>
-                        </div>
-                        <!-- Colored status cards-->
                         <div class="row gx-3">
                             <div class="col-xxl-3 col-md-6 mb-5">
                                 <div class="card card-raised border-start border-primary border-4">
