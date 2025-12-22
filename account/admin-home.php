@@ -8,9 +8,8 @@
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div class="me-2">
                                                 <div class="display-5"><h1>10</h1></div>
-                                                <div class="card-text">Total months</div>
+                                                <div class="card-text">Total Cycles</div>
                                             </div>
-                                            <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
                                         </div>                                        
                                     </div>
                                 </div>
@@ -21,9 +20,8 @@
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div class="me-2">
                                                 <div class="display-5"><h1>10</h1></div>
-                                                <div class="card-text">Total months</div>
+                                                <div class="card-text">Average Cycle:  from <strong><?= $pastMonthYear; ?></strong></div>
                                             </div>
-                                            <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
                                         </div>                                        
                                     </div>
                                 </div>
@@ -34,9 +32,8 @@
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div class="me-2">
                                                 <div class="display-5"><h1>10</h1></div>
-                                                <div class="card-text">Total months</div>
-                                            </div>
-                                            <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
+                                                <div class="card-text">Starting Cycle</div>
+                                            </div>                  
                                         </div>                                        
                                     </div>
                                 </div>
@@ -47,9 +44,8 @@
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div class="me-2">
                                                 <div class="display-5"><h1>10</h1></div>
-                                                <div class="card-text">Total months</div>
+                                                <div class="card-text">Ending Cycle</div>
                                             </div>
-                                            <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
                                         </div>                                        
                                     </div>
                                 </div>
