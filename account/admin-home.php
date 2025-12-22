@@ -1,7 +1,5 @@
 <div id="layoutDrawer_content">
-                <!-- Main page content-->
                 <main>
-                    <!-- Main dashboard content-->
                     <div class="container-xl p-5">
                         <div class="row justify-content-between align-items-center mb-5">
                             <div class="col flex-shrink-0 mb-5 mb-md-0">
