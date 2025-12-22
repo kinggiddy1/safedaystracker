@@ -7,6 +7,8 @@ $userData = $process->GetRow("SELECT names, email FROM users WHERE id = ?",["$us
 
 $currentMonthYear = date('F Y');
 $pastMonthYear = date('F Y', strtotime('-6 months'));
+
+
 ?>
 
 <!DOCTYPE html>
