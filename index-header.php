@@ -26,8 +26,8 @@
             <li><a href="<?php echo URLROOT;?>" class="active">Home</a></li>
           
             <!-- <li><a href="<?php echo URLROOT;?>blog">Blog</a></li>
-            <li><a href="<?php echo URLROOT;?>contact">Contact</a></li>
-                <li><a href="<?php echo URLROOT;?>account">Account</a></li> -->
+            <li><a href="<?php echo URLROOT;?>contact">Contact</a></li>-->
+              <li><a href="<?php echo URLROOT;?>account/login.php">Account</a></li> 
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
