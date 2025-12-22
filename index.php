@@ -102,14 +102,14 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
   <div style="max-width: 850px; margin: 0 auto;">
     
   <!-- Section Header -->
-    <div style="text-align: center; margin-bottom: 20px;">
+  <div style="text-align: center; margin-bottom: 20px;">
   <h2 style="color: #EC407A; font-size: 1.8em; font-weight: 700; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">
      A <strong>quick</strong> way to predict fertility: No account required. 
   </h2>
   <p style="color: #666; font-size: 0.9em; margin: 0;"> 
     Enter your cycle dates from <strong><?= $pastMonthYear; ?></strong> to <strong><?= $currentMonthYear; ?></strong>.
   </p>
-    </div>
+  </div>
     <!-- Form Card -->
     <div style="background: white; border-radius: 15px; padding: 25px; box-shadow: 0 8px 30px rgba(236, 64, 122, 0.1);">
       
