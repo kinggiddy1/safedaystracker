@@ -8,110 +8,108 @@ $userData = $process->GetRow("SELECT names, email FROM users WHERE id = ?",["$us
 $currentMonthYear = date('F Y');
 $pastMonthYear = date('F Y', strtotime('-6 months'));
 
+// Get period dates from database
+$periodDatesRaw = $process->GetRows("SELECT period_start_date FROM cycles WHERE user_id = ? 
+ORDER BY period_start_date ASC 
+LIMIT 7 ",["$userId"]);
 
-$cycleData = $process->GetRows("SELECT * FROM cycles WHERE user_id = ? 
-ORDER BY cycle_id DESC 
-LIMIT 6 ",["$userId"]);
+// Extract just the dates into an array
+$periodDates = array_column($periodDatesRaw, 'period_start_date');
 
-
-$cycleLengths = [];
+// Convert to starts and ends format
 $starts = [];
 $ends = [];
-$totalCycles = 0;
-$hasData = false;
 
+for ($i = 0; $i < count($periodDates) - 1; $i++) {
+    $starts[] = $periodDates[$i];
+    $ends[] = $periodDates[$i + 1];
+}
 
-$shortest = null;
-$longest = null;
-$average = null;
-$fertileStart = null;
-$fertileEnd = null;
-$ovulationDay = null;
-$ovulationDayEnd = null;
-$displayFertileStart = null;
-$periodLength = 5; 
-$lastPeriodDate = null;
-$cycleLength = null;
+// Calculate cycle lengths
+$cycleLengths = [];
 
-// Variables for calendar - only set when we have data
-$lastPeriodDay = null;
-$lastPeriodMonth = null;
-$lastPeriodYear = null;
-$year = null;
-$month = null;
-$daysInMonth = null;
-$startDayOfWeek = null;
+for ($i = 0; $i < count($starts); $i++) {
+    if (!empty($starts[$i]) && !empty($ends[$i])) {
+        $start = new DateTime($starts[$i]);
+        $end   = new DateTime($ends[$i]);
 
+        $diff = $start->diff($end)->days;
 
-if (!empty($cycleData)) {
-    foreach ($cycleData as $cycle) {
-        if (!empty($cycle['period_start_date']) && !empty($cycle['next_period_start_date'])) {
-            $start = new DateTime($cycle['period_start_date']);
-            $end   = new DateTime($cycle['next_period_start_date']);
-
-            $diff = $start->diff($end)->days;
-            
-            if ($diff >= 21 && $diff <= 35) {
-                $cycleLengths[] = $diff;
-                $starts[] = $cycle['period_start_date'];
-                $ends[] = $cycle['next_period_start_date'];
-            }
+        if ($diff >= 21 && $diff <= 35) {
+            $cycleLengths[] = $diff;
         }
     }
-    
-    // Only calculate if we have at least 3 valid cycles
-    if (count($cycleLengths) >= 3) {
-        $hasData = true;
-        $totalCycles = count($cycleLengths);
-        
-        // Core values
-        $shortest = min($cycleLengths);
-        $longest  = max($cycleLengths);
-        $average  = round(array_sum($cycleLengths) / count($cycleLengths));
-        
-        // Ovulation range
-        $ovulationStart = $shortest - 14;
-        $ovulationEnd   = $longest - 14;
-        
-        // Fertile window
-        $fertileStart = $ovulationStart - 5;
-        $fertileEnd   = $ovulationEnd + 1;
-        
-        // For display
-        $displayFertileStart = max(1, $fertileStart);
-        $ovulationDay = $ovulationStart;
-        $ovulationDayEnd = $ovulationEnd;
-        
-        // IMPORTANT: Use the PERIOD START date (not next period start)
-        $lastPeriodDate = $ends[0]; // Most recent period START date
-        
-   
-        // Calculate cycle length for calendar display
-        $cycleLength = $average;
-        
-        // Parse last period date for calendar
-        $lastPeriodTimestamp = strtotime($lastPeriodDate);
-        $lastPeriodDay = date('d', $lastPeriodTimestamp);
-        $lastPeriodMonth = date('m', $lastPeriodTimestamp);
-        $lastPeriodYear = date('Y', $lastPeriodTimestamp);
-        
-        // Get current month details for calendar
-        $year = date('Y');
-        $month = date('m');
-        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-        $startDayOfWeek = date('w', mktime(0, 0, 0, $month, 1, $year));
-        
-        // Store in session for other pages if needed
-        $_SESSION['data'] = [
-            'cycles' => $cycleLengths,
-            'shortest' => $shortest,
-            'longest' => $longest,
-            'average' => $average,
-            'fertile_start' => $fertileStart,
-            'fertile_end' => $fertileEnd,
-            'last_period_date' => $lastPeriodDate  
-        ];
-    }
+}
+
+// Check if we have enough cycles
+if (count($cycleLengths) < 3) {
+    $_SESSION['error'] = [
+        'message' => 'Please record at least 3 consecutive cycles for reliable prediction.',
+        'cycles_provided' => count($cycleLengths)
+    ];
+    header('Location: dashboard');
+    exit;
+}
+
+// Core values
+$shortest = min($cycleLengths);
+$longest  = max($cycleLengths);
+$average  = round(array_sum($cycleLengths) / count($cycleLengths));
+
+// Ovulation range
+$ovulationStart = $shortest - 14;
+$ovulationEnd   = $longest - 14;
+
+// Fertile window
+$fertileStart = $ovulationStart - 5;
+$fertileEnd   = $ovulationEnd + 1;
+
+$lastPeriodDate = end($ends); 
+
+
+// Store in session
+$_SESSION['data'] = [
+    'cycles' => $cycleLengths,
+    'shortest' => $shortest,
+    'longest' => $longest,
+    'average' => $average,
+    'fertile_start' => $fertileStart,
+    'fertile_end' => $fertileEnd,
+    'last_period_date' => $lastPeriodDate  
+];
+
+// Calendar setup
+$month = date('n'); // 1-12
+$year = date('Y');
+
+$firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year);
+$daysInMonth = date('t', $firstDayOfMonth);
+$startDayOfWeek = date('w', $firstDayOfMonth); // 0 (Sun) to 6 (Sat)
+
+$cycleLength = $average;
+$periodLength = 5;
+
+// Adjust fertile start if it overlaps with period
+if ($fertileStart <= $periodLength) {
+    $displayFertileStart = $periodLength + 2; // Day 7 (after 5-day period + 1 follicular day)
+} else {
+    $displayFertileStart = $fertileStart;
+}
+
+$ovulationDay = round(($ovulationStart + $ovulationEnd) / 2);
+$ovulationDayEnd = $ovulationDay + 1;
+
+// Parse last period date for calendar
+if ($lastPeriodDate) {
+    $lastPeriodTimestamp = strtotime($lastPeriodDate);
+    $lastPeriodDay = date('j', $lastPeriodTimestamp);
+    $lastPeriodMonth = date('n', $lastPeriodTimestamp);
+    $lastPeriodYear = date('Y', $lastPeriodTimestamp);
+} else {
+    // Fallback
+    $lastPeriodDay = 1;
+    $lastPeriodMonth = date('n');
+    $lastPeriodYear = date('Y');
 }
 
 ?>
@@ -124,7 +122,7 @@ if (!empty($cycleData)) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SAFE DAYS TRACKER</title>
+        <title>Calendar - SAFE DAYS TRACKER</title>
         <!-- Load Favicon-->
         <link href="assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <!-- Load Material Icons from Google Fonts-->
@@ -441,7 +439,150 @@ if (!empty($cycleData)) {
                 </nav>
             </div>
             <!-- Layout content-->
-            <?php require_once ('admin-home.php'); ?>
+            <div id="layoutDrawer_content">
+                <main>
+                    <div class="container-xl p-5">
+                            <div class="header-section">
+                                <div class="logo-title">
+                                    <div class="logo">🌸</div>
+                                    <h1>Your Cycle Calendar</h1>
+                                </div>
+                                <p class="month-title"><?= date('F Y') ?></p>
+                            </div>
+
+                            <div class="calendar-card">
+                                <div class="legend">
+                                    <div class="legend-item">
+                                        <div class="legend-box legend-menstruation"></div>
+                                        <span><strong>Menstruation</strong><br>Period days</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-box legend-follicular"></div>
+                                        <span><strong>Follicular Phase</strong><br>Pre-ovulation</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-box legend-fertile"></div>
+                                        <span><strong>Fertile Window</strong><br>High chance</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-box legend-ovulation"></div>
+                                        <span><strong>Ovulation Peak</strong><br>Highest fertility</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-box legend-luteal"></div>
+                                        <span><strong>Luteal Phase</strong><br>Post-ovulation</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-box legend-safe"></div>
+                                        <span><strong>Safe Days</strong><br>Less fertile</span>
+                                    </div>
+                                </div>
+
+                                <div class="calendar">
+                                    <!-- Weekday headers -->
+                                    <div class="header">Sun</div>
+                                    <div class="header">Mon</div>
+                                    <div class="header">Tue</div>
+                                    <div class="header">Wed</div>
+                                    <div class="header">Thu</div>
+                                    <div class="header">Fri</div>
+                                    <div class="header">Sat</div>
+
+                                    <!-- Empty slots for days before the first day -->
+                                    <?php for ($i = 0; $i < $startDayOfWeek; $i++): ?>
+                                        <div class="empty"></div>
+                                    <?php endfor; ?>
+
+                                    <!-- Days of the month -->
+                                    <?php 
+                                    for ($day = 1; $day <= $daysInMonth; $day++):
+                                        // Create timestamp for current calendar day
+                                        $currentDayTimestamp = mktime(0, 0, 0, $month, $day, $year);
+                                        $lastPeriodFullTimestamp = mktime(0, 0, 0, $lastPeriodMonth, $lastPeriodDay, $lastPeriodYear);
+                                        
+                                        // Calculate days since last period started
+                                        $daysSinceLastPeriod = floor(($currentDayTimestamp - $lastPeriodFullTimestamp) / (60 * 60 * 24));
+                                        
+                                        // Calculate cycle day (1-based)
+                                        $dayOfCycle = ($daysSinceLastPeriod % $cycleLength) + 1;
+                                        if ($daysSinceLastPeriod < 0) {
+                                            // Before last period - calculate from previous cycle
+                                            $dayOfCycle = $cycleLength + $daysSinceLastPeriod + 1;
+                                        }
+                                        
+                                        // Determine phase and class based on cycle day
+                                        if ($dayOfCycle >= 1 && $dayOfCycle <= $periodLength) {
+                                            $class = 'menstruation';
+                                            $phase = 'Period';
+                                        } elseif ($dayOfCycle > $periodLength && $dayOfCycle < $displayFertileStart) {
+                                            // Follicular phase: after period but before fertile window
+                                            $class = 'follicular';
+                                            $phase = 'Follicular';
+                                        } elseif ($dayOfCycle >= $ovulationDay && $dayOfCycle <= $ovulationDayEnd) {
+                                            // Peak ovulation days (2 days in middle of fertile window)
+                                            $class = 'ovulation';
+                                            $phase = 'Ovulation';
+                                        } elseif ($dayOfCycle >= $displayFertileStart && $dayOfCycle <= $fertileEnd) {
+                                            // Fertile window (includes days around ovulation)
+                                            $class = 'fertile';
+                                            $phase = 'Fertile';
+                                        } elseif ($dayOfCycle > $fertileEnd && $dayOfCycle <= $cycleLength) {
+                                            $class = 'luteal';
+                                            $phase = 'Luteal';
+                                        } else {
+                                            $class = 'safe';
+                                            $phase = 'Safe';
+                                        }
+                                    ?>
+                                        <div class="day <?= $class ?>">
+                                            <?= $day ?>
+                                        </div>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+
+                            <div class="stats-grid">
+                                <div class="stat-box">
+                                    <div class="stat-number"><?= $shortest ?></div>
+                                    <div class="stat-label">Shortest Cycle</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-number"><?= $average ?></div>
+                                    <div class="stat-label">Average Cycle</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-number"><?= $longest ?></div>
+                                    <div class="stat-label">Longest Cycle</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-number"><?= ($fertileEnd - $displayFertileStart + 1) ?></div>
+                                    <div class="stat-label">Fertile Days</div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3><span class="warning-icon">⚠️</span> Important Information</h3>
+                                <p>
+                                    This calendar shows your menstrual cycle phases for <?= date('F Y') ?> based on your cycle data.
+                                    <br><strong>Menstruation</strong> is your period (days 1-<?= $periodLength ?>). 
+                                    <br><strong>Follicular Phase</strong> is when your body prepares for ovulation. 
+                                    <br><strong>Fertile Window</strong> (light pink) is when pregnancy is possible (days <?= $displayFertileStart ?>-<?= $fertileEnd ?>). 
+                                    <br><strong>Ovulation Peak</strong> (dark pink) is when you're MOST fertile - typically days <?= $ovulationDay ?>-<?= $ovulationDayEnd ?>. 
+                                    <br><strong>Luteal Phase</strong> is after ovulation. 
+                                    <strong>Safe Days</strong> have lower fertility. 
+                                </p>
+                            </div>
+
+                    </div>
+                </main>
+                <footer class="py-4 mt-auto border-top" style="min-height: 74px">
+                    <div class="container-xl px-5">
+                        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
+                            <div class="me-sm-2 align-items-center justify-content-sm-center">Copyright © safedaystracker.com <?php echo date("Y"); ?></div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
         <!-- Load Bootstrap JS bundle-->
         <script src="../cdn.jsdelivr.net/npm/bootstrap%405.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
