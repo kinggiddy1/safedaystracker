@@ -48,7 +48,7 @@ for ($i = 0; $i < count($starts); $i++) {
 
 // Check if we have enough cycles
 if (count($periodDates) < 3) {
-    !$hasData = true;
+    $hasData = false;
 }
 
 // Core values
@@ -89,12 +89,10 @@ $startDayOfWeek = date('w', $firstDayOfMonth); // 0 (Sun) to 6 (Sat)
 $cycleLength = $average;
 $periodLength = 5;
 
-// Adjust fertile start if it overlaps with period
-if ($fertileStart <= $periodLength) {
-    $displayFertileStart = $periodLength + 2; // Day 7 (after 5-day period + 1 follicular day)
-} else {
-    $displayFertileStart = $fertileStart;
-}
+
+// $displayFertileStart = $fertileStart + 2;
+$displayFertileStart = max($fertileStart, $periodLength + 1);
+
 
 $ovulationDay = round(($ovulationStart + $ovulationEnd) / 2);
 $ovulationDayEnd = $ovulationDay + 1;
