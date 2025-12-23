@@ -8,6 +8,7 @@ if (!isset($_SESSION['userId'])) {
 require_once('loader.php');
 
 $userId = $_SESSION['userId'];
+
 $cycleData = $process->GetRow("SELECT * FROM cycles WHERE cycle_id = ? 
 ORDER BY cycle_id DESC 
 LIMIT 6 ",["$userId"]);

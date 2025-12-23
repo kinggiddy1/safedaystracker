@@ -8,6 +8,111 @@ $userData = $process->GetRow("SELECT names, email FROM users WHERE id = ?",["$us
 $currentMonthYear = date('F Y');
 $pastMonthYear = date('F Y', strtotime('-6 months'));
 
+// Fetch cycle data from database
+$cycleData = $process->GetRows("SELECT * FROM cycles WHERE user_id = ? 
+ORDER BY cycle_id DESC 
+LIMIT 6 ",["$userId"]);
+
+// Initialize variables - NO DEFAULT VALUES THAT COULD MISLEAD
+$cycleLengths = [];
+$starts = [];
+$ends = [];
+$totalCycles = 0;
+$hasData = false;
+
+// These will only be set if we have valid data
+$shortest = null;
+$longest = null;
+$average = null;
+$fertileStart = null;
+$fertileEnd = null;
+$ovulationDay = null;
+$ovulationDayEnd = null;
+$displayFertileStart = null;
+$periodLength = 5; // This is reasonable - typical period length
+$lastPeriodDate = null;
+$cycleLength = null;
+
+// Variables for calendar - only set when we have data
+$lastPeriodDay = null;
+$lastPeriodMonth = null;
+$lastPeriodYear = null;
+$year = null;
+$month = null;
+$daysInMonth = null;
+$startDayOfWeek = null;
+
+// Check if we have data
+if (!empty($cycleData)) {
+    // Process database results - USING CORRECT COLUMN NAMES
+    foreach ($cycleData as $cycle) {
+        if (!empty($cycle['period_start_date']) && !empty($cycle['next_period_start_date'])) {
+            $start = new DateTime($cycle['period_start_date']);
+            $end   = new DateTime($cycle['next_period_start_date']);
+
+            $diff = $start->diff($end)->days;
+            
+            if ($diff >= 21 && $diff <= 35) {
+                $cycleLengths[] = $diff;
+                $starts[] = $cycle['period_start_date'];
+                $ends[] = $cycle['next_period_start_date'];
+            }
+        }
+    }
+    
+    // Only calculate if we have at least 3 valid cycles
+    if (count($cycleLengths) >= 3) {
+        $hasData = true;
+        $totalCycles = count($cycleLengths);
+        
+        // Core values
+        $shortest = min($cycleLengths);
+        $longest  = max($cycleLengths);
+        $average  = round(array_sum($cycleLengths) / count($cycleLengths));
+        
+        // Ovulation range
+        $ovulationStart = $shortest - 14;
+        $ovulationEnd   = $longest - 14;
+        
+        // Fertile window
+        $fertileStart = $ovulationStart - 5;
+        $fertileEnd   = $ovulationEnd + 1;
+        
+        // For display
+        $displayFertileStart = max(1, $fertileStart);
+        $ovulationDay = $ovulationStart;
+        $ovulationDayEnd = $ovulationEnd;
+        
+        // IMPORTANT: Use the PERIOD START date (not next period start)
+        $lastPeriodDate = $starts[0]; // Most recent period START date
+        
+        // Calculate cycle length for calendar display
+        $cycleLength = $average;
+        
+        // Parse last period date for calendar
+        $lastPeriodTimestamp = strtotime($lastPeriodDate);
+        $lastPeriodDay = date('d', $lastPeriodTimestamp);
+        $lastPeriodMonth = date('m', $lastPeriodTimestamp);
+        $lastPeriodYear = date('Y', $lastPeriodTimestamp);
+        
+        // Get current month details for calendar
+        $year = date('Y');
+        $month = date('m');
+        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $startDayOfWeek = date('w', mktime(0, 0, 0, $month, 1, $year));
+        
+        // Store in session for other pages if needed
+        $_SESSION['data'] = [
+            'cycles' => $cycleLengths,
+            'shortest' => $shortest,
+            'longest' => $longest,
+            'average' => $average,
+            'fertile_start' => $fertileStart,
+            'fertile_end' => $fertileEnd,
+            'last_period_date' => $lastPeriodDate  
+        ];
+    }
+}
 
 ?>
 
@@ -329,7 +434,7 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
                             <i class="material-icons text-muted">account_circle</i>
                             <div class="ms-3">
                                 <div class="caption">Logged in as:</div>
-                                <div class="small fw-500">Start Bootstrap</div>
+                                <div class="small fw-500"><?= $userData['names'] ?></div>
                             </div>
                         </div>
                     </div>
@@ -356,8 +461,5 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
 
         <script src="../assets.startbootstrap.com/js/sb-customizer.js"></script>
         <sb-customizer project="material-admin-pro"></sb-customizer>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"6e2c2575ac8f44ed824cef7899ba8463","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997992e86cc473be',t:'MTc2MTk4MTA0MQ=='};var a=document.createElement('script');a.src='cdn-cgi/challenge-platform/h/g/scripts/jsd/b5237f8e6aad/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-
-<!-- Mirrored from material-admin-pro.startbootstrap.com/app-dashboard-minimal.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Nov 2025 07:12:03 GMT -->
+    </body>
 </html>
