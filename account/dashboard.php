@@ -83,8 +83,9 @@ if (!empty($cycleData)) {
         $ovulationDayEnd = $ovulationEnd;
         
         // IMPORTANT: Use the PERIOD START date (not next period start)
-        $lastPeriodDate = $starts[0]; // Most recent period START date
+        $lastPeriodDate = $ends[0]; // Most recent period START date
         
+   
         // Calculate cycle length for calendar display
         $cycleLength = $average;
         

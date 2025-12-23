@@ -122,7 +122,6 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
               <tr>
                 <th style="text-align: center; color: #EC407A; font-weight: 600; padding: 8px; font-size: 0.9em; width: 50px;">#</th>
                 <th style="text-align: left; color: #EC407A; font-weight: 600; padding: 8px; font-size: 0.9em;">Period Start Date</th>
-                <th style="text-align: left; color: #EC407A; font-weight: 600; padding: 8px; font-size: 0.9em;">Next Period Start Date</th>
                 <th style="text-align: center; color: #EC407A; font-weight: 600; padding: 8px; font-size: 0.9em; width: 60px;">Action</th>
               </tr>
             </thead>
@@ -264,7 +263,7 @@ function addCycle() {
     <td style="padding: 10px;">
       <input 
         type="date" 
-        name="start[]" 
+        name="period_dates[]" 
         placeholder="${monthPlaceholder}"
         style="width: 100%; padding: 8px 12px; border: 2px solid #ffe0eb; border-radius: 6px; font-family: 'Poppins', sans-serif; font-size: 0.85em; outline: none;"
         onfocus="this.style.borderColor='#EC407A'"
@@ -272,17 +271,7 @@ function addCycle() {
         required
       >
     </td>
-    <td style="padding: 10px;">
-      <input 
-        type="date" 
-        name="end[]" 
-        placeholder="${monthPlaceholder}"
-        style="width: 100%; padding: 8px 12px; border: 2px solid #ffe0eb; border-radius: 6px; font-family: 'Poppins', sans-serif; font-size: 0.85em; outline: none;"
-        onfocus="this.style.borderColor='#EC407A'"
-        onblur="this.style.borderColor='#ffe0eb'"
-        required
-      >
-    </td>
+    
     <td style="padding: 10px; text-align: center; border-radius: 0 8px 8px 0;">
       <button type="button" class="remove-btn" onclick="removeCycle(this)" title="Remove cycle">
         ×

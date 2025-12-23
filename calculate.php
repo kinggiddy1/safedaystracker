@@ -4,13 +4,24 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$starts = $_POST['start'];
-$ends   = $_POST['end'];
+// Get period dates and sort them chronologically
+$periodDates = $_POST['period_dates'];
+sort($periodDates);
 
+// Convert to starts and ends format for compatibility with existing logic
+$starts = [];
+$ends = [];
+
+for ($i = 0; $i < count($periodDates) - 1; $i++) {
+    $starts[] = $periodDates[$i];
+    $ends[] = $periodDates[$i + 1];
+}
+
+// Now continue with your exact existing logic
 $cycleLengths = [];
 
 for ($i = 0; $i < count($starts); $i++) {
-    if (!empty($starts[$i]) && !empty($ends[$i])) {
+    if (!empty($starts[$i])) {
         $start = new DateTime($starts[$i]);
         $end   = new DateTime($ends[$i]);
 
@@ -44,7 +55,6 @@ $ovulationEnd   = $longest - 14;
 // Fertile window
 $fertileStart = $ovulationStart - 5;
 $fertileEnd   = $ovulationEnd + 1;
-
 
 $lastPeriodDate = end($ends); 
 
