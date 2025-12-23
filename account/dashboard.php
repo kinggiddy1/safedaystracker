@@ -13,14 +13,14 @@ $cycleData = $process->GetRows("SELECT * FROM cycles WHERE user_id = ?
 ORDER BY cycle_id DESC 
 LIMIT 6 ",["$userId"]);
 
-// Initialize variables - NO DEFAULT VALUES THAT COULD MISLEAD
+
 $cycleLengths = [];
 $starts = [];
 $ends = [];
 $totalCycles = 0;
 $hasData = false;
 
-// These will only be set if we have valid data
+
 $shortest = null;
 $longest = null;
 $average = null;
