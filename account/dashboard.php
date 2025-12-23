@@ -8,7 +8,7 @@ $userData = $process->GetRow("SELECT names, email FROM users WHERE id = ?",["$us
 $currentMonthYear = date('F Y');
 $pastMonthYear = date('F Y', strtotime('-6 months'));
 
-// Fetch cycle data from database
+
 $cycleData = $process->GetRows("SELECT * FROM cycles WHERE user_id = ? 
 ORDER BY cycle_id DESC 
 LIMIT 6 ",["$userId"]);
