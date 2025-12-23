@@ -185,8 +185,8 @@ if (!empty($cycleData)) {
 
     h1 {
         color: #EC407A;
-        font-size: 2.5em;
-        font-weight: 700;
+        font-size: 1.5em;
+        font-weight: 600;
         margin-bottom: 10px;
     }
 

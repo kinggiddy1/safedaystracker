@@ -5,8 +5,8 @@
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <h4 class="alert-heading">Hi <strong><?= htmlspecialchars($userData['names']) ?></strong>, Welcome to Safe Days Tracker!</h4>
                     <p>
-                        To get personalized cycle predictions, you need at least <strong>3 consecutive valid menstrual cycles</strong> (21-35 days each).
-                        <br>
+                        To get personalized cycle predictions, you need at least <strong>3 consecutive valid menstrual cycles</strong>.
+                        <br><br>
                         Currently, you have recorded <strong><?= count($cycleLengths) ?></strong> valid cycle(s).
                         <br>
                         Please add <?= max(0, 3 - count($cycleLengths)) ?> more cycle(s) to unlock your personalized predictions!
