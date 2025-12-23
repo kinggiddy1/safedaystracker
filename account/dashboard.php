@@ -43,12 +43,7 @@ for ($i = 0; $i < count($starts); $i++) {
 
 // Check if we have enough cycles
 if (count($cycleLengths) < 3) {
-    $_SESSION['error'] = [
-        'message' => 'Please record at least 3 consecutive cycles for reliable prediction.',
-        'cycles_provided' => count($cycleLengths)
-    ];
-    header('Location: dashboard');
-    exit;
+    $hasData = false;
 }
 
 // Core values

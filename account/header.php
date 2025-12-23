@@ -16,7 +16,7 @@
                     <button class="btn btn-lg btn-icon dropdown-toggle me-3" id="dropdownMenuMessages" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">mail_outline</i></button>
                 </div>
 
-                <div class="dropdown">
+                <div class="dropdown"><a href="logout.php">
                     <button class="btn btn-lg btn-icon dropdown-toggle" id="dropdownMenuProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">person</i></button>
                     <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="dropdownMenuProfile">
                         <li>
@@ -26,7 +26,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div></a>
             </div>
         </div>
     </div>
