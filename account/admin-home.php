@@ -2,9 +2,8 @@
     <main>
         <div class="container-xl p-1">
             <?php if (!$hasData): ?>
-                <!-- Show message when user has insufficient data -->
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <h4 class="alert-heading">📝 Welcome to Safe Days Tracker!</h4>
+                    <h4 class="alert-heading">Hi <strong><?= htmlspecialchars($userData['names']) ?></strong>, Welcome to Safe Days Tracker!</h4>
                     <p>
                         To get personalized cycle predictions, you need at least <strong>3 consecutive valid menstrual cycles</strong> (21-35 days each).
                         <br>
