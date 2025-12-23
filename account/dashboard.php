@@ -29,7 +29,7 @@ $fertileEnd = null;
 $ovulationDay = null;
 $ovulationDayEnd = null;
 $displayFertileStart = null;
-$periodLength = 5; // This is reasonable - typical period length
+$periodLength = 5; 
 $lastPeriodDate = null;
 $cycleLength = null;
 
@@ -42,9 +42,8 @@ $month = null;
 $daysInMonth = null;
 $startDayOfWeek = null;
 
-// Check if we have data
+
 if (!empty($cycleData)) {
-    // Process database results - USING CORRECT COLUMN NAMES
     foreach ($cycleData as $cycle) {
         if (!empty($cycle['period_start_date']) && !empty($cycle['next_period_start_date'])) {
             $start = new DateTime($cycle['period_start_date']);
