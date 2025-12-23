@@ -11,10 +11,10 @@ $daysInMonth = date('t', $firstDayOfMonth);
 $startDayOfWeek = date('w', $firstDayOfMonth); // 0 (Sun) to 6 (Sat)
 
 
-$shortest = isset($data['shortest']) ? $data['shortest'] : 21;
-$longest = isset($data['longest']) ? $data['longest'] : 35;
-$average = isset($data['average']) ? $data['average'] : 28;
-$cycleLength = $average; 
+$shortest = isset($data['shortest']) ? $data['shortest'] : null;
+$longest = isset($data['longest']) ? $data['longest'] : null;
+$average = isset($data['average']) ? $data['average'] : null;
+$cycleLength = $average;
 
 
 $periodLength = 5;
