@@ -2,7 +2,7 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="<?php echo URLROOT;?>" class="logo d-flex align-items-center">
             <span class="sitename">SAFE DAYS TRACKER</span>
           </a>
           <p style="color: #ffffffff;">Safe Days is your trusted companion for understanding your menstrual cycle. We provide accurate fertility predictions based on your personal cycle data, helping you make informed decisions about your reproductive health. Track, predict, and understand your body's natural rhythm.</p>

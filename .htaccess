@@ -3,3 +3,4 @@ RewriteEngine On
 RewriteRule ^home index.php [NC,L]
 RewriteRule ^result result.php [NC,L]
 RewriteRule ^error error.php [NC,L]
+RewriteRule ^login/?$ account/login.php [NC,L]
