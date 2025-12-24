@@ -59,7 +59,7 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
           <div style="position: absolute; top: 50%; left: 10%; transform: translateY(-50%); max-width: 500px; z-index: 10;">
             <h1 style="color: #EC407A; font-size: 3rem; font-weight: 700; line-height: 1.2; margin-bottom: 20px;">Understand Your Cycle</h1>
             <p style="color: #EC407A; font-size: 1.1rem; margin-bottom: 30px;">Track your past cycles and discover days with higher or lower chances of pregnancy.</p>
-            <a href="#about" class="btn btn-primary" style="background-color: #EC407A; border: none; padding: 12px 30px; font-size: 1rem;">Learn More About Us</a>
+            <a href="#about" class="btn btn-primary" style="background-color: #EC407A; border: none; padding: 12px 30px; font-size: 1rem;">Create account</a>
           </div>
         </div>
 
@@ -69,7 +69,7 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
           <div style="position: absolute; top: 50%; left: 10%; transform: translateY(-50%); max-width: 500px; z-index: 10;">
             <h1 style="color: #EC407A; font-size: 3rem; font-weight: 700; line-height: 1.2; margin-bottom: 20px;">How It Works  Based on Your History</h1>
             <p style="color: #EC407A; font-size: 1.1rem; margin-bottom: 30px;">Enter up to 6 consecutive months of period start dates for a more realistic prediction.</p>
-            <a href="#products" class="btn btn-primary" style="background-color: #EC407A; border: none; padding: 12px 30px; font-size: 1rem;">Shop Now</a>
+            <a href="#products" class="btn btn-primary" style="background-color: #EC407A; border: none; padding: 12px 30px; font-size: 1rem;">Create account</a>
           </div>
         </div>
 
@@ -77,9 +77,9 @@ $pastMonthYear = date('F Y', strtotime('-6 months'));
         <div class="carousel-item" style="position: relative;">
           <img src="assets/img/products/back.png" class="d-block w-100" alt="Honey Comb" style="height: 600px; object-fit: cover;">
           <div style="position: absolute; top: 50%; left: 10%; transform: translateY(-50%); max-width: 500px; z-index: 10;">
-            <h1 style="color: #EC407A; font-size: 3rem; font-weight: 700; line-height: 1.2; margin-bottom: 20px;">Important to Know</h1>
-            <p style="color: #EC407A; font-size: 1.1rem; margin-bottom: 30px;">Predictions are estimates and should not replace medical advice or contraception.</p>
-            <a href="#products" class="btn btn-primary" style="background-color: #EC407A; border: none; padding: 12px 30px; font-size: 1rem;">Explore Products</a>
+            <h1 style="color: #EC407A; font-size: 3rem; font-weight: 700; line-height: 1.2; margin-bottom: 20px;">Create an account</h1>
+            <p style="color: #EC407A; font-size: 1.1rem; margin-bottom: 30px;">If you want to access personalized features and track your cycles more effectively, consider creating an account.</p>
+            <a href="#products" class="btn btn-primary" style="background-color: #EC407A; border: none; padding: 12px 30px; font-size: 1rem;">Create account</a>
           </div>
         </div>
       </div>
