@@ -1,3 +1,5 @@
 RewriteEngine On
 
 RewriteRule ^login login.php [NC,L]
+RewriteRule ^dashboard dashboard.php [NC,L]
+RewriteRule ^cycles cycles.php [NC,L]

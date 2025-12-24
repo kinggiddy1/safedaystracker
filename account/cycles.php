@@ -1,5 +1,7 @@
 <?php
 require_once('loader.php');
+require_once('perlConfig.php');
+
 if (!isset($_SESSION['userId'])) {
     header("location:login");
     exit();
