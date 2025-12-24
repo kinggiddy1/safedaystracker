@@ -17,7 +17,7 @@
         <!-- Load main stylesheet-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
-    <body class="bg-light">
+    <body class="" style="background: linear-gradient(135deg, #fef5f8 0%, #fff0f5 100%);">
         <!-- Layout wrapper-->
         <div id="layoutAuthentication">
             <!-- Layout content-->
@@ -34,7 +34,7 @@
                                         <div class="text-center">
                                             <img class="mb-3" src="assets/img/icons/background.svg" alt="..." style="height: 48px" />
                                             <h1 class="display-5 mb-0">Login</h1>
-                                            <div class="subheading-1 mb-5">to continue to app</div>
+                                            <div class="subheading-1 mb-5">for more features</div>
                                         </div>
                                         <!-- Login submission form-->
                                         <form method="post" action="submissions.php">
@@ -45,7 +45,7 @@
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small fw-500 text-decoration-none" href="app-auth-password-basic.html">Forgot Password?</a>
-                                                <button class="btn btn-primary" name="login" type="submit">Login</button>
+                                                <button class="btn btn-primary" style="background-color: #EC407A;" name="login" type="submit">Login</button>
                                             </div>
                                         </form>
                                     </div>
