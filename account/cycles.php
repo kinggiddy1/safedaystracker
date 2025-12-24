@@ -20,7 +20,7 @@ $cycles = $process->GetRows("SELECT * FROM cycles WHERE user_id = ?",["$userId"]
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - User List</title>
+        <title>Cycles - SAFE DAYS TRACKER</title>
         <!-- Load Favicon-->
         <link href="assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <!-- Load Material Icons from Google Fonts-->
@@ -152,15 +152,7 @@ $cycles = $process->GetRows("SELECT * FROM cycles WHERE user_id = ?",["$userId"]
                      <?php require_once ('nav.php'); ?>   
                     </div>
                     <!-- Drawer footer        -->
-                    <div class="drawer-footer border-top">
-                        <div class="d-flex align-items-center">
-                            <i class="material-icons text-muted">account_circle</i>
-                            <div class="ms-3">
-                                <div class="caption">Logged in as:</div>
-                                <div class="small fw-500">Start Bootstrap</div>
-                            </div>
-                        </div>
-                    </div>
+                     <?php require_once ('footer.php'); ?>
                 </nav>
             </div>
             <!-- Layout content-->
