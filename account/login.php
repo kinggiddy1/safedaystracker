@@ -14,7 +14,7 @@ if (isset($_SESSION['userId'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Login - Link Rwanda</title>
+        <title>Login - SAFE DAYS TRACKER</title>
         <!-- Load Favicon-->
         <link href="assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <!-- Load Material Icons from Google Fonts-->
@@ -40,7 +40,7 @@ if (isset($_SESSION['userId'])) {
                                     <div class="card-body p-5">
                                         <!-- Auth header with logo image-->
                                         <div class="text-center">
-                                            <img class="mb-3" src="assets/img/icons/background.svg" alt="..." style="height: 48px" />
+                                            <a href="<?php echo URLROOT;?>"><img class="mb-3" src="assets/img/icons/background.svg" alt="..." style="height: 48px" /></a>
                                             <h1 class="display-5 mb-0">Login</h1>
                                             <div class="subheading-1 mb-5">for more features</div>
                                         </div>
