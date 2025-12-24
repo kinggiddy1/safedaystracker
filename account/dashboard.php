@@ -2,7 +2,7 @@
 require_once('loader.php');
 
 if (!isset($_SESSION['userId'])) {
-    header("location:login.php");
+    header("location:login");
     exit();
 }
 $userId = $_SESSION['userId'];
