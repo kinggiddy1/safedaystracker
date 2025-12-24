@@ -19,8 +19,7 @@
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About us</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Team</a></li>
+            <li><a href="#">Account</a></li>
           </ul>
         </div>
 
@@ -30,8 +29,8 @@
           <h4>Contacts</h4>
           <p>Kigali, Rwanda</p>
          
-          <p class="mt-4"><strong>Phone:</strong> <span>+250 788 658 619</span></p>
-          <p><strong>Email:</strong> <span>info@originalfooddelivery.com</span></p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+250 788 599 074</span></p>
+          <p><strong>Email:</strong> <span>info@safedaystracker.com</span></p>
         </div>
 
       </div>
