@@ -10,7 +10,7 @@
                                     <h5 class="card-title mb-0">Cycles Table</h5>
                                 </div>
                                 <div class="col text-end">
-                                    <button class="btn btn-dark" onclick="window.location.href='add-cycle.php'">
+                                    <button class="btn btn-dark" onclick="window.location.href='add-cycles'">
                                         <i class="bi bi-plus-circle"></i> Add New Cycle
                                     </button>
                                 </div>
