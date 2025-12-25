@@ -80,4 +80,15 @@ if($process){
  else echo "<script>alert('Error updating cycles');document.location='add-cycle.php'</script>";
 }
 
+if(isset($_POST["delete_cycle"])){
+    $cycleID = $_POST["cycle_id"];
+    $userId = $_SESSION['userId'];
+
+    $process->DeletingData("DELETE FROM cycles WHERE cycle_id = ? AND user_id = ?", ["$cycleID", "$userId"]);
+if($process){
+        echo "<script>alert('Cycles deleted successfully');document.location='cycles'</script>";
+}  
+ else echo "<script>alert('Error deleting cycles');document.location='add-cycle.php'</script>";
+}
+
 ?>
