@@ -23,8 +23,8 @@
                                         <th>ID</th>
                                         <th>Period Start Date</th>
                                         <th>Cycle Length</th>
-                                        <th>Added At</th>
-                                        <th>Updated At</th>
+                                        <th>Cycle Added At</th>
+                                        <th>Cycle Updated At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
