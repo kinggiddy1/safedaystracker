@@ -53,36 +53,17 @@ if(isset($_GET["id"])){
 
 
 
-if(isset($_POST["addproducts"])){
-    $pname   = $_POST["pname"];
-    $pcategory   = $_POST["pcategory"];
+if(isset($_POST["save_cycles"])){
+    $cycle_dates = $_POST["period_dates"];
+    $userId = $_SESSION['userId'];
 
-
-    $pic_status = 1;
-
-    if (!file_exists('productimage')) {
-        mkdir('productimage', 0777, true); // Create productimage directory if it doesn’t exist
+    foreach($cycle_dates as $date) {
+        $process->InsertData("INSERT INTO cycles (user_id, period_start_date) VALUES (?, ?)", ["$userId", "$date"]);
     }
-
-    $fileCount = count($_FILES["image"]['name']);
-    for ($i = 0; $i < $fileCount; $i++) {
-        $RandomNum = time();
-        $ImageName = str_replace(' ', '-', strtolower($_FILES['image']['name'][$i]));
-        $ImageExt = pathinfo($ImageName, PATHINFO_EXTENSION);
-        $NewImageName = uniqid() . '.' . $ImageExt;
-        $output_path = "productimage/" . $NewImageName;
-
-        if (move_uploaded_file($_FILES["image"]["tmp_name"][$i], $output_path)) {
-
-            $result = $process->InsertingData("INSERT INTO products (name, category, image) VALUES (?, ?, ?)",["$pname","$pcategory","$output_path"]);
-            if($result) {
-                 echo "<script>alert('Image uploaded successfully');document.location='dashboard.php'</script>";
-
-            } else {
-                echo "Failed to upload " . $_FILES['image']['name'][$i];
-            }
-        }
-    }
+if($process){
+        echo "<script>alert('Cycles saved successfully');document.location='cycles'</script>";
+}  
+ else echo "<script>alert('Error saving cycles');document.location='add-cycle.php'</script>";
 }
 
 

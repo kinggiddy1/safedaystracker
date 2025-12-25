@@ -4,16 +4,16 @@
   <!-- Section Header -->
   <div style="text-align: center; margin-bottom: 20px;">
   <h2 style="color: #EC407A; font-size: 1.8em; font-weight: 700; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">
-     A <strong>quick</strong> way to predict fertility: No account required. 
+     Add your cycles to preddict safe days
   </h2>
   <p style="color: #666; font-size: 0.9em; margin: 0;"> 
-    Enter your cycle dates from <strong><?= $pastMonthYear; ?></strong> to <strong><?= $currentMonthYear; ?></strong>.
+    Save at least 6 cycles up to <strong><?= $currentMonthYear; ?></strong>.
   </p>
   </div>
     <!-- Form Card -->
     <div style="background: white; border-radius: 15px; padding: 25px; box-shadow: 0 8px 30px rgba(236, 64, 122, 0.1);">
       
-      <form method="post" action="calculate.php" id="cycleForm">
+      <form method="post" action="submissions.php" id="cycleForm">
         
         <!-- Cycles Container -->
         <div id="cyclesContainer" style="overflow-x: auto;">
@@ -51,11 +51,12 @@
         <div style="text-align: center; margin-top: 20px;">
           <button 
             type="submit" 
+            name="save_cycles"
             style="background: linear-gradient(135deg, #EC407A 0%, #ff6b9d 100%); color: white; border: none; padding: 12px 40px; font-size: 0.95em; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(236, 64, 122, 0.3); font-family: 'Poppins', sans-serif;"
             onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(236, 64, 122, 0.4)'"
             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(236, 64, 122, 0.3)'"
           >
-            Predict Fertility Days
+            Save
           </button>
         </div>
 
