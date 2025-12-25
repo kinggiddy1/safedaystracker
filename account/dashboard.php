@@ -48,9 +48,10 @@ for ($i = 0; $i < count($starts); $i++) {
 
 
 // Check if we have enough cycles
-if (count($periodDates) < 3) {
+if (count($cycleLengths) < 3) {
     $hasData = false;
 }
+
 
 // Core values
 $shortest = min($cycleLengths);
