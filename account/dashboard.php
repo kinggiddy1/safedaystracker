@@ -18,7 +18,8 @@ $periodDatesRaw = $process->GetRows("SELECT period_start_date FROM cycles WHERE 
 ORDER BY period_start_date ASC 
 LIMIT 7 ",["$userId"]);
 
-$hasData = true;
+$hasData = null;
+
 $periodDates = array_column($periodDatesRaw, 'period_start_date');
 
 // Convert to starts and ends format
@@ -48,10 +49,10 @@ for ($i = 0; $i < count($starts); $i++) {
 
 
 // Check if we have enough cycles
-if (count($cycleLengths) < 3) {
-    $hasData = false;
-}
 
+if (count($cycleLengths) > 3) {
+    $hasData = true;
+}
 
 // Core values
 $shortest = min($cycleLengths);

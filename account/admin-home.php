@@ -231,7 +231,6 @@
             <?php endif; ?>
         </div>
     </main>
-    
     <footer class="py-4 mt-auto border-top" style="min-height: 74px">
         <div class="container-xl px-5">
             <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
