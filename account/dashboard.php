@@ -49,68 +49,70 @@ for ($i = 0; $i < count($starts); $i++) {
 
 
 // Check if we have enough cycles
-
-if (count($cycleLengths) > 3) {
+if (count($cycleLengths) >= 3) {
     $hasData = true;
 }
 
-// Core values
-$shortest = min($cycleLengths);
-$longest  = max($cycleLengths);
-$average  = round(array_sum($cycleLengths) / count($cycleLengths));
+// Only calculate these values if we have enough data
+if ($hasData) {
+    // Core values
+    $shortest = min($cycleLengths);
+    $longest  = max($cycleLengths);
+    $average  = round(array_sum($cycleLengths) / count($cycleLengths));
 
-// Ovulation range
-$ovulationStart = $shortest - 14;
-$ovulationEnd   = $longest - 14;
+    // Ovulation range
+    $ovulationStart = $shortest - 14;
+    $ovulationEnd   = $longest - 14;
 
-// Fertile window
-$fertileStart = $ovulationStart - 5;
-$fertileEnd   = $ovulationEnd + 1;
+    // Fertile window
+    $fertileStart = $ovulationStart - 5;
+    $fertileEnd   = $ovulationEnd + 1;
 
-$lastPeriodDate = end($ends); 
-
-
-// Store in session
-$_SESSION['data'] = [
-    'cycles' => $cycleLengths,
-    'shortest' => $shortest,
-    'longest' => $longest,
-    'average' => $average,
-    'fertile_start' => $fertileStart,
-    'fertile_end' => $fertileEnd,
-    'last_period_date' => $lastPeriodDate  
-];
-
-// Calendar setup
-$month = date('n'); // 1-12
-$year = date('Y');
-
-$firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year);
-$daysInMonth = date('t', $firstDayOfMonth);
-$startDayOfWeek = date('w', $firstDayOfMonth); // 0 (Sun) to 6 (Sat)
-
-$cycleLength = $average;
-$periodLength = 5;
+    $lastPeriodDate = end($ends); 
 
 
-// $displayFertileStart = $fertileStart + 2;
-$displayFertileStart = max($fertileStart, $periodLength + 1);
+    // Store in session
+    $_SESSION['data'] = [
+        'cycles' => $cycleLengths,
+        'shortest' => $shortest,
+        'longest' => $longest,
+        'average' => $average,
+        'fertile_start' => $fertileStart,
+        'fertile_end' => $fertileEnd,
+        'last_period_date' => $lastPeriodDate  
+    ];
+
+    // Calendar setup
+    $month = date('n'); // 1-12
+    $year = date('Y');
+
+    $firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year);
+    $daysInMonth = date('t', $firstDayOfMonth);
+    $startDayOfWeek = date('w', $firstDayOfMonth); // 0 (Sun) to 6 (Sat)
+
+    $cycleLength = $average;
+    $periodLength = 5;
 
 
-$ovulationDay = round(($ovulationStart + $ovulationEnd) / 2);
-$ovulationDayEnd = $ovulationDay + 1;
+    // $displayFertileStart = $fertileStart + 2;
+    $displayFertileStart = max($fertileStart, $periodLength + 1);
 
-// Parse last period date for calendar
-if ($lastPeriodDate) {
-    $lastPeriodTimestamp = strtotime($lastPeriodDate);
-    $lastPeriodDay = date('j', $lastPeriodTimestamp);
-    $lastPeriodMonth = date('n', $lastPeriodTimestamp);
-    $lastPeriodYear = date('Y', $lastPeriodTimestamp);
-} else {
-    // Fallback
-    $lastPeriodDay = 1;
-    $lastPeriodMonth = date('n');
-    $lastPeriodYear = date('Y');
+
+    $ovulationDay = round(($ovulationStart + $ovulationEnd) / 2);
+    $ovulationDayEnd = $ovulationDay + 1;
+
+    // Parse last period date for calendar
+    if ($lastPeriodDate) {
+        $lastPeriodTimestamp = strtotime($lastPeriodDate);
+        $lastPeriodDay = date('j', $lastPeriodTimestamp);
+        $lastPeriodMonth = date('n', $lastPeriodTimestamp);
+        $lastPeriodYear = date('Y', $lastPeriodTimestamp);
+    } else {
+        // Fallback
+        $lastPeriodDay = 1;
+        $lastPeriodMonth = date('n');
+        $lastPeriodYear = date('Y');
+    }
 }
 
 ?>
@@ -435,6 +437,20 @@ if ($lastPeriodDate) {
             <div id="layoutDrawer_content">
                 <main>
                     <div class="container-xl p-5">
+                        <?php if (!$hasData): ?>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <h4 class="alert-heading">Hi <strong><?= htmlspecialchars($userData['names']) ?></strong>, Welcome to Safe Days Tracker!</h4>
+                                <p>
+                                    To view your personalized cycle calendar, you need at least <strong>3 consecutive valid menstrual cycles</strong>.
+                                    <br><br>
+                                    Currently, you have recorded <strong><?= count($cycleLengths) ?></strong> valid cycle(s).
+                                    <br>
+                                    Please add <?= max(0, 3 - count($cycleLengths)) ?> more cycle(s) to unlock your calendar!
+                                </p>
+                                <hr>
+                                <a href="add-cycle" class="btn btn-primary">Add New Cycle</a>
+                            </div>
+                        <?php else: ?>
                             <div class="header-section">
                                 <div class="logo-title">
                                     <div class="logo">🌸</div>
@@ -565,7 +581,7 @@ if ($lastPeriodDate) {
                                     <strong>Safe Days</strong> have lower fertility. 
                                 </p>
                             </div>
-
+                        <?php endif; ?>
                     </div>
                 </main>
                 <footer class="py-4 mt-auto border-top" style="min-height: 74px">
