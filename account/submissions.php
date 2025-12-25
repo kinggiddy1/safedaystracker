@@ -68,9 +68,9 @@ if($process){
 
 
 
-if(isset($_POST["update_cycle"])){
-    $cycleID = $_POST["cycle_id"];
-    $period_start_date = $_POST["period_start_date"];
+if(isset($_GET["update_cycle"])){
+    $cycleID = $_GET["cycle_id"];
+    $period_start_date = $_GET["period_start_date"];
     $userId = $_SESSION['userId'];
 
     $process->UpdateData("UPDATE cycles SET period_start_date = ? WHERE cycle_id = ? AND user_id = ?", ["$period_start_date", "$cycleID", "$userId"]);
@@ -80,15 +80,22 @@ if($process){
  else echo "<script>alert('Error updating cycles');document.location='add-cycle.php'</script>";
 }
 
-if(isset($_POST["delete_cycle"])){
-    $cycleID = $_POST["cycle_id"];
+if (isset($_GET["cycle_id"])) {
+    $cycleID = $_GET["cycle_id"];
     $userId = $_SESSION['userId'];
 
-    $process->DeletingData("DELETE FROM cycles WHERE cycle_id = ? AND user_id = ?", ["$cycleID", "$userId"]);
-if($process){
-        echo "<script>alert('Cycles deleted successfully');document.location='cycles'</script>";
-}  
- else echo "<script>alert('Error deleting cycles');document.location='add-cycle.php'</script>";
+    $process->DeletingData(
+        "DELETE FROM cycles WHERE cycle_id = ? AND user_id = ?",
+        [$cycleID, $userId]
+    );
+
+    if ($process) {
+        echo "<script>alert('Cycle deleted successfully');document.location='cycles'</script>";
+    } else {
+        echo "<script>alert('Error deleting cycle');document.location='cycles'</script>";
+    }
 }
+
+
 
 ?>

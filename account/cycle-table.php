@@ -68,7 +68,7 @@
                                                 <a href="edit-cycle.php?id=<?php echo $cycle['cycle_id']; ?>" class="btn btn-sm btn-primary" title="Edit">
                                                     <i class="bi bi-pencil"></i> Edit
                                                 </a>
-                                                <a href="submissions?id=<?php echo $cycle['cycle_id']; ?>" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you sure you want to delete this cycle?')">
+                                                <a href="submissions.php?cycle_id=<?php echo $cycle['cycle_id']; ?>" class="btn btn-sm btn-danger" name="delete_cycle" title="Delete" onclick="return confirm('Are you sure you want to delete this cycle?')">
                                                     <i class="bi bi-trash"></i> Delete
                                                 </a>
                                             </td>
