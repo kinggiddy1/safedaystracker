@@ -65,7 +65,7 @@
                                             <td><?php echo date('M d, Y H:i', strtotime($cycle['cycle_created_at'])); ?></td>
                                             <td><?php echo date('M d, Y H:i', strtotime($cycle['cycle_updated_at'])); ?></td>
                                             <td>
-                                                <a href="edit-cycle.php?id=<?php echo $cycle['cycle_id']; ?>" class="btn btn-sm btn-primary" title="Edit">
+                                                <a href="edit-cycle.php?id=<?php echo $cycle['cycle_id']; ?>" class="btn btn-sm btn-primary" title="Edit" name="update_cycle">
                                                     <i class="bi bi-pencil"></i> Edit
                                                 </a>
                                                 <a href="submissions.php?cycle_id=<?php echo $cycle['cycle_id']; ?>" class="btn btn-sm btn-danger" name="delete_cycle" title="Delete" onclick="return confirm('Are you sure you want to delete this cycle?')">

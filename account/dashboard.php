@@ -94,13 +94,12 @@ if ($hasData) {
     $periodLength = 5;
 
 
-    // $displayFertileStart = $fertileStart + 2;
     $displayFertileStart = max($fertileStart, $periodLength + 1);
 
 
     $ovulationDay = round(($ovulationStart + $ovulationEnd) / 2);
     $ovulationDayEnd = $ovulationDay + 1;
-
+   
     // Parse last period date for calendar
     if ($lastPeriodDate) {
         $lastPeriodTimestamp = strtotime($lastPeriodDate);

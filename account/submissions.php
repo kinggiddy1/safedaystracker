@@ -68,9 +68,9 @@ if($process){
 
 
 
-if(isset($_GET["update_cycle"])){
-    $cycleID = $_GET["cycle_id"];
-    $period_start_date = $_GET["period_start_date"];
+if(isset($_POST["update_cycle"])){
+    $cycleID = $_POST["cycle_id"];
+    $period_start_date = $_POST["period_start_date"];
     $userId = $_SESSION['userId'];
 
     $process->UpdateData("UPDATE cycles SET period_start_date = ? WHERE cycle_id = ? AND user_id = ?", ["$period_start_date", "$cycleID", "$userId"]);
