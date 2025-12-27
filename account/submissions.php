@@ -282,4 +282,29 @@ if(isset($_POST['register'])){
         }
 }
 
+
+
+if(isset($_POST['verify']))
+   {
+    $code = $_POST['verification'];
+  
+    $result = $process->UpdateData("UPDATE users set status ='active' WHERE verification_codes=?",["$code"]);
+        
+    if($user = $process->GetRow("SELECT * FROM users WHERE verification_codes=?",["$code"]));
+
+    {
+        $_SESSION['type'] = $user['role'];
+        $_SESSION['userEmail'] = $user['email'];
+        $_SESSION['username'] = $user['names'];
+        $_SESSION['userId'] = $user['id'];
+        $_SESSION['userType'] = $user['role'];
+        $_SESSION['user_password'] = "true";
+        if($user)
+        {
+        echo "<script>alert('You have successfully Verified your account !');document.location='dashboard'</script>";  
+        $result2 = $process->UpdateData("UPDATE users set verification_codes ='' WHERE verification_codes=?",["$code"]);
+    }
+    }   
+     echo "<script>alert('Wrong verification codes! Check your Codes and try again');document.location='verification.php'</script>";     
+}
 ?>
