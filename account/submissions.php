@@ -102,48 +102,34 @@ if(isset($_POST['register'])){
     $guid = md5(rand(1000000,1));
     $names = htmlspecialchars($_POST['names']);
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-    if (isDisposableEmail($email)) {
-    echo "<script>alert('Temporary or disposable emails are not allowed.'); document.location='register'</script>";
-    exit();
-    }
-    $role = $_POST['role'];
-    $currency = $_POST['currency'];
     $password = $_POST['password'];
     $verification = substr(number_format(time()*rand(),0,'',''),0,6);
-
-    if (!preg_match('/^[0-9]{10,15}$/', $role)) {
-        echo "<script>alert('Please enter a valid phone number'); document.location='register'</script>";
-        exit();
-    }
 
     if(session_status() !== PHP_SESSION_ACTIVE){
 		session_start();
 	}
-    $_SESSION['userPhone'] = $role;
     $_SESSION['userEmail'] = $email;
     $_SESSION['username'] = $names;
     $_SESSION['password'] = hash("sha256",$password);
-    $_SESSION['userType'] = $role;
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
 
     {
         $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-        $recaptcha_secret = '6LcIE5wpAAAAADhVGynk7vBygaAw510SyWTIN03W';
+        $recaptcha_secret = '6Ld_sTgsAAAAAJdjevb5AentHq5-_0-8k-CdvlZZ';
         $recaptcha_response = $_POST['g-recaptcha-response'];
         $recaptcha = file_get_contents($recaptcha_url.'?secret='.$recaptcha_secret.'&response='.$recaptcha_response);
 
     $recaptcha = json_decode($recaptcha,true);
 
-    if($recaptcha['success'] == 1 && $recaptcha['hostname'] =='thefocalmedia.com')
+    if($recaptcha['success'] == 1 && $recaptcha['hostname'] =='localhost')
 
     if ($process->Check("SELECT * FROM users WHERE email like  ?",["$email"])){
         echo "<script>alert('The user already exists');document.location='register'</script>";
        }
        else{
-   
-    if($process->UpdateData("INSERT INTO `users` ( `user_guid`,`names`,`email`,`phone`,`password`,`verification_codes`,`currency`) VALUES (?,?,?,?,?,?,?)",["$guid","$names","$email","$role",hash("sha256","$password"),"$verification","$currency"])){
-        $update = $process->UpdateData("INSERT INTO notify (notifications) VALUES (-5)");
+
+    if($process->UpdateData("INSERT INTO `users` ( `user_guid`,`names`,`email`,`password`,`verification_codes`) VALUES (?,?,?,?,?)",["$guid","$names","$email",hash("sha256","$password"),"$verification"])){
         require "vendor/autoload.php";
 
         $mail = new PHPMailer(true);
@@ -158,7 +144,7 @@ if(isset($_POST['register'])){
             $mail->Port       = 587;                                   
         
             // $mail->setFrom($email, 'The Focal Media'); 
-            $mail->setFrom('thefocalmedia2022@gmail.com', 'The Focal Media');
+            $mail->setFrom('thefocalmedia2022@gmail.com', 'Safe Days Tracker');
             $mail->addAddress($email, $names);     
 
             $mail->isHTML(true);                            
@@ -182,7 +168,7 @@ if(isset($_POST['register'])){
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .header {
-            background-color: #0D3069;
+            background-color: #EC407A;
             color: white;
             padding: 30px 20px;
             text-align: center;
@@ -211,7 +197,7 @@ if(isset($_POST['register'])){
         .verification-code {
             font-size: 28px;
             font-weight: bold;
-            color: #0D3069;
+            color: #EC407A;
             margin: 10px 0;
             letter-spacing: 2px;
         }
@@ -223,7 +209,7 @@ if(isset($_POST['register'])){
         }
         .button {
             display: inline-block;
-            background-color: #0D3069;
+            background-color: #EC407A;
             color: #ffffff;
             padding: 12px 25px;
             text-decoration: none;
@@ -233,7 +219,7 @@ if(isset($_POST['register'])){
             margin-bottom: 15px;
         }
         .button:hover {
-            background-color: #0D3069;
+            background-color: #EC407A;
             color: #ffffff;
         }
         .footer {
@@ -276,7 +262,7 @@ if(isset($_POST['register'])){
             <p class="warning"><b>If it is not you creating an account, just ignore this message!</b></p>
         </div>
         <div class="footer">
-            <p>&copy; ' . date("Y") . ' The Focal Media. All rights reserved.</p>
+            <p>&copy; ' . date("Y") . ' Safe Days Tracker. All rights reserved.</p>
         </div>
     </div>
 </body>

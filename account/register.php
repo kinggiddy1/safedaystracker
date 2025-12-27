@@ -24,6 +24,7 @@ if (isset($_SESSION['userId'])) {
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500" rel="stylesheet" />
         <!-- Load main stylesheet-->
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body class="" style="background: linear-gradient(135deg, #fef5f8 0%, #fff0f5 100%);">
         <!-- Layout wrapper-->
@@ -51,9 +52,12 @@ if (isset($_SESSION['userId'])) {
                                             <div class="d-flex align-items-center" required>
                                                 <mwc-formfield label="I agree to the Terms and Conditions"><mwc-checkbox></mwc-checkbox></mwc-formfield>
                                             </div>
+                                            <div class="g-recaptcha" data-sitekey="6Ld_sTgsAAAAAJD3MtoAlEhCMPKsCsGX4ZpUJr9s"></div>
+                                            <br>
+                                        
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small fw-500 text-decoration-none" href="app-auth-password-basic.html"></a>
-                                                <button class="btn btn-primary" style="background-color: #EC407A;" name="login" type="submit">Register</button>
+                                                <button class="btn btn-primary" style="background-color: #EC407A;" name="register" type="submit">Register</button>
                                             </div>
                                         </form>
                                     </div>
