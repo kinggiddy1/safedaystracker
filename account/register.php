@@ -14,7 +14,7 @@ if (isset($_SESSION['userId'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Login - SAFE DAYS TRACKER</title>
+        <title>Register - SAFE DAYS TRACKER</title>
         <!-- Load Favicon-->
         <link href="assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <!-- Load Material Icons from Google Fonts-->
@@ -41,25 +41,25 @@ if (isset($_SESSION['userId'])) {
                                         <!-- Auth header with logo image-->
                                         <div class="text-center">
                                             <a href="<?php echo URLROOT;?>"><img class="mb-3" src="assets/img/icons/background.svg" alt="..." style="height: 48px" /></a>
-                                            <h1 class="display-5 mb-0">Login</h1>
-                                            <div class="subheading-1 mb-5">for more features</div>
+                                            <h1 class="display-5 mb-0 mb-3">Create an account</h1>
                                         </div>
                                         <!-- Login submission form-->
-                                        <form method="post" action="submissions.php">
-                                            <div class="mb-4"><mwc-textfield class="w-100" label="Username" outlined="" name="email"></mwc-textfield></div>
+                                        <form method="post" action="submissions">
+                                            <div class="mb-4"><mwc-textfield class="w-100" label="Names" outlined="" name="names"></mwc-textfield></div>
+                                            <div class="mb-4"><mwc-textfield class="w-100" label="Email" outlined="" name="email"></mwc-textfield></div>
                                             <div class="mb-4"><mwc-textfield class="w-100" label="Password" outlined="" icontrailing="visibility_off" type="password" name="password"></mwc-textfield></div>
-                                            <div class="d-flex align-items-center">
-                                                <mwc-formfield label="Remember password"><mwc-checkbox></mwc-checkbox></mwc-formfield>
+                                            <div class="d-flex align-items-center" required>
+                                                <mwc-formfield label="I agree to the Terms and Conditions"><mwc-checkbox></mwc-checkbox></mwc-formfield>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small fw-500 text-decoration-none" href="app-auth-password-basic.html">Forgot Password?</a>
-                                                <button class="btn btn-primary" style="background-color: #EC407A;" name="login" type="submit">Login</button>
+                                                <a class="small fw-500 text-decoration-none" href="app-auth-password-basic.html"></a>
+                                                <button class="btn btn-primary" style="background-color: #EC407A;" name="login" type="submit">Register</button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                                 <!-- Auth card message-->
-                                <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-primary" href="<?php echo URLROOT;?>account/register">Need an account? Sign up!</a></div>
+                                <div class="text-center mb-5"><a class="small fw-500 text-decoration-none link-primary" href="<?php echo URLROOT;?>account/login">already have an account? Login</a></div>
                             </div>
                         </div>
                     </div>

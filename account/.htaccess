@@ -5,4 +5,5 @@ RewriteRule ^dashboard dashboard.php [NC,L]
 RewriteRule ^cycles cycles.php [NC,L]
 RewriteRule ^add-cycle add-cycle.php [NC,L]
 RewriteRule ^submissions submissions.php [NC,L]
+RewriteRule ^register register.php [NC,L]
 
