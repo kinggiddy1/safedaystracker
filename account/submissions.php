@@ -286,7 +286,7 @@ if(isset($_POST['register'])){
 
 if(isset($_POST['verify']))
    {
-    $code = $_POST['verification'];
+    $code = $_POST['codes'];
   
     $result = $process->UpdateData("UPDATE users set status ='active' WHERE verification_codes=?",["$code"]);
         
